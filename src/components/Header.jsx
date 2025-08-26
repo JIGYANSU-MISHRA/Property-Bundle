@@ -3,10 +3,10 @@ import { Link } from "react-scroll";
 import { FaXmark, FaBars } from "react-icons/fa6";
 import logo from "../assets/images/logo.png";
 import { useDarkMode } from "./DarkModeContext";
-import { FaPhoneAlt, FaUserCircle } from "react-icons/fa";
+import { FaPhoneAlt, FaUserCircle, FaMoon, FaSun } from "react-icons/fa";
 
 const Header = () => {
-  const { darkMode } = useDarkMode();
+  const { darkMode, toggleDarkMode } = useDarkMode();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -17,7 +17,7 @@ const Header = () => {
   };
 
   const navItems = [
-    { link: "Home", path: "home" },
+    { link: "Home", path: "hero" },
     { link: "About", path: "about" },
     { link: "Properties", path: "properties" },
     { link: "Services", path: "services" },
@@ -41,6 +41,9 @@ const Header = () => {
             spy
             smooth
             offset={-80}
+            duration={500}
+            onSetActive={() => {}}
+            onSetInactive={() => {}}
             className="text-gray-800 dark:text-white font-semibold uppercase text-sm cursor-pointer px-3 py-2 rounded-lg transition duration-300 hover:bg-green-600 hover:text-white"
           >
             {link}
@@ -68,6 +71,9 @@ const Header = () => {
               spy
               smooth
               offset={-80}
+              duration={500}
+              onSetActive={() => {}}
+              onSetInactive={() => {}}
               className="block text-lg uppercase font-semibold cursor-pointer p-3 rounded-lg transition duration-300 hover:bg-green-600 hover:text-black text-center"
               onClick={closeMenu}
             >
@@ -83,6 +89,17 @@ const Header = () => {
           <FaPhoneAlt className="text-green-600 text-xl" />
           <span className="text-gray-800 dark:text-white text-lg font-semibold">77777 77777</span>
         </div>
+        <button
+          onClick={toggleDarkMode}
+          aria-label="Toggle dark mode"
+          className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+        >
+          {darkMode ? (
+            <FaMoon className="text-yellow-300" size={18} />
+          ) : (
+            <FaSun className="text-yellow-400" size={18} />
+          )}
+        </button>
         <FaUserCircle className="text-green-600 text-3xl" />
       </div>
     </nav>
