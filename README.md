@@ -1,12 +1,53 @@
-# React + Vite
+# HomeDeal - Real Estate Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+HomeDeal is a modern real estate website built with React.js and Tailwind CSS, using Vite for fast development and AOS for scroll animations.
 
-Currently, two official plugins are available:
+## 🛠 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend:** React.js, Tailwind CSS
+- **Build Tool:** Vite
+- **Animations:** AOS (CSS3-driven scroll animation library)
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Interactive and smooth UI/UX
+- Fast performance with Vite
+- Responsive design with TailwindCSS
+- Engaging scroll animations using AOS
+
+## 🚀 Getting Started
+
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/JIGYANSU-MISHRA/HomeDeal
+   cd homedeal
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and go to:
+   ```
+   https://homedeal.vercel.app/
+   ```
+
+## 🎨 Animations with AOS
+
+AOS (Animate On Scroll) is used for adding animations while scrolling.
+
+To customize animations, edit `src/main.jsx` and modify the AOS configuration:
+
+
+---
+
+Made with ❤️ by Jigyansu Mishra(https://github.com/JIGYANSU-MISHRA)
