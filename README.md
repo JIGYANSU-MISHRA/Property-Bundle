@@ -1,6 +1,6 @@
-# HomeDeal - Real Estate Website
+# Property Bundle - Real Estate Website
 
-HomeDeal is a modern real estate website built with React.js and Tailwind CSS, using Vite for fast development and AOS for scroll animations.
+Property Bundle is a modern real estate website built with React.js and Tailwind CSS, using Vite for fast development and AOS for scroll animations.
 
 ## 🛠 Tech Stack
 
@@ -22,8 +22,8 @@ HomeDeal is a modern real estate website built with React.js and Tailwind CSS, u
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/JIGYANSU-MISHRA/HomeDeal
-   cd homedeal
+   git clone https://github.com/JIGYANSU-MISHRA/PropertyBundle
+   cd propertybundle
    ```
 
 2. Install dependencies:
@@ -38,7 +38,7 @@ HomeDeal is a modern real estate website built with React.js and Tailwind CSS, u
 
 4. Open your browser and go to:
    ```
-   https://homedeal.vercel.app/
+   https://propertybundle.vercel.app/
    ```
 
 ## 🎨 Animations with AOS

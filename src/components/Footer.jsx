@@ -31,7 +31,7 @@ const Footer = () => {
         <div className="flex flex-col justify-center items-start gap-5">
           <h1 className="text-white text-2xl font-semibold">About Us</h1>
           <p className="text-slate-200 text-justify">
-            At <span className="font-semibold">HomeDeal</span>, we are dedicated to helping you find the perfect property that matches your lifestyle and aspirations. With years of experience in the real estate industry, we specialize in residential, commercial, and investment properties across India.
+            At <span className="font-semibold">Property Bundle</span>, we are dedicated to helping you find the perfect property that matches your lifestyle and aspirations. With years of experience in the real estate industry, we specialize in residential, commercial, and investment properties across India.
           </p>
           <div className="flex justify-start items-center gap-3 mt-4">
             {[
@@ -83,10 +83,10 @@ const Footer = () => {
         <div className="flex flex-col justify-center items-start gap-5">
           <h1 className="text-white text-2xl font-semibold">Contact Us</h1>
           {[
-            { icon: <FaBuilding className="text-white size-5" />, text: "HomeDeal, 123 Business Street, Bhubaneswar, India" },
+            { icon: <FaBuilding className="text-white size-5" />, text: "Property Bundle, 123 Business Street, Bhubaneswar, India" },
             { icon: <FaMobile className="text-white size-5" />, text: "+91 99999 99999" },
             { icon: <FaFax className="text-white size-5" />, text: "+91 77777 77777" },
-            { icon: <IoMdMail className="text-white size-5" />, text: "info@homedeal.com" },
+            { icon: <IoMdMail className="text-white size-5" />, text: "info@propertybundle.com" },
           ].map((item, index) => (
             <div key={index} className="flex justify-center items-center gap-3">
               {item.icon}
@@ -133,7 +133,7 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-slate-300 text-sm">©{year} HomeDeal India. All rights reserved.</p>
+          <p className="text-slate-300 text-sm">©{year} Property Bundle India. All rights reserved.</p>
           <div className="flex items-center gap-4 text-slate-300 text-sm">
             <Link to="privacy" className="cursor-pointer hover:text-white">Privacy</Link>
             <span className="opacity-40">|</span>

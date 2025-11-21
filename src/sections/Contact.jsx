@@ -122,7 +122,7 @@ const Contact = () => {
     {
       icon: FaEnvelope,
       title: "Email Us",
-      value: "info@homedeal.com",
+      value: "info@propertybundle.com",
       description: "Get detailed information via email",
       action: "Send Email",
       color: "text-red-600"

@@ -219,7 +219,7 @@ export const client = [
     name: "Sneha Rao",
     text: "Excellent team!",
     feedback:
-      "The HomeDeal team did an outstanding job helping me buy my first home. The high level of service and dedication was remarkable. They guided me through every step of the process with patience and expertise.",
+      "The Property Bundle team did an outstanding job helping me buy my first home. The high level of service and dedication was remarkable. They guided me through every step of the process with patience and expertise.",
     rating: 5,
     location: "Mumbai",
     property: "2BHK Apartment"
@@ -229,7 +229,7 @@ export const client = [
     name: "Priya Iyer",
     text: "Very good work",
     feedback:
-      "The HomeDeal team provided exceptional support throughout my home-buying journey. Their professionalism was impressive. They found me the perfect property within my budget and requirements.",
+      "The Property Bundle team provided exceptional support throughout my home-buying journey. Their professionalism was impressive. They found me the perfect property within my budget and requirements.",
     rating: 5,
     location: "Bangalore",
     property: "3BHK Villa"
@@ -239,7 +239,7 @@ export const client = [
     name: "Amit Verma",
     text: "Very well",
     feedback:
-      "I had a great experience with HomeDeal. Their team guided me at every step and ensured a smooth process. The property evaluation and legal assistance were top-notch.",
+      "I had a great experience with Property Bundle. Their team guided me at every step and ensured a smooth process. The property evaluation and legal assistance were top-notch.",
     rating: 4,
     location: "Delhi",
     property: "Commercial Space"
@@ -249,7 +249,7 @@ export const client = [
     name: "Rohan Sharma",
     text: "Excellent team!",
     feedback:
-      "HomeDeal was fantastic in helping me find my dream home. Their commitment and expertise made all the difference. The virtual tour and detailed property information were very helpful.",
+      "Property Bundle was fantastic in helping me find my dream home. Their commitment and expertise made all the difference. The virtual tour and detailed property information were very helpful.",
     rating: 5,
     location: "Chennai",
     property: "Penthouse"
@@ -259,7 +259,7 @@ export const client = [
     name: "Vikram Mehta",
     text: "Highly recommended!",
     feedback:
-      "HomeDeal truly cares about their clients. Their attention to detail and personalized approach were commendable. The loan assistance and legal support were invaluable.",
+      "Property Bundle truly cares about their clients. Their attention to detail and personalized approach were commendable. The loan assistance and legal support were invaluable.",
     rating: 5,
     location: "Hyderabad",
     property: "Luxury Villa"
@@ -269,7 +269,7 @@ export const client = [
     name: "Piyush Kapoor",
     text: "Great service!",
     feedback:
-      "From start to finish, HomeDeal provided top-notch service. Their knowledge and dedication were truly impressive. The property inspection and quality assurance were excellent.",
+      "From start to finish, Property Bundle provided top-notch service. Their knowledge and dedication were truly impressive. The property inspection and quality assurance were excellent.",
     rating: 4,
     location: "Pune",
     property: "Studio Apartment"

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-scroll";
 import { FaXmark, FaBars } from "react-icons/fa6";
-import logo from "../assets/images/logo.png";
 import { useDarkMode } from "./DarkModeContext";
 import { FaPhoneAlt, FaUserCircle, FaMoon, FaSun } from "react-icons/fa";
 
@@ -29,7 +28,16 @@ const Header = () => {
     <nav className={`${darkMode ? "dark bg-gray-900" : "light bg-white shadow-md"} fixed w-full top-0 z-50 py-4 px-6 lg:px-20 flex justify-between items-center transition-all duration-300`}>
       {/* Logo */}
       <div className="flex items-center gap-4">
-        <img src={logo} alt="Company Logo" className="lg:w-[160px] w-[120px] dark:invert" />
+        <Link
+          to="hero"
+          spy
+          smooth
+          offset={-80}
+          duration={500}
+          className="text-green-600 dark:text-green-400 font-bold text-xl lg:text-2xl cursor-pointer hover:text-green-700 dark:hover:text-green-300 transition-colors"
+        >
+          Property Bundle
+        </Link>
       </div>
 
       {/* Desktop Navigation */}

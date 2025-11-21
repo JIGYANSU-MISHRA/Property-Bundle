@@ -106,7 +106,7 @@ const About = () => {
           data-aos-delay="400"
           className="text-lg text-gray-600 dark:text-gray-300 text-justify"
         >
-          At <span className="font-semibold">HomeDeal</span>, we are dedicated to helping you find the perfect property that matches your lifestyle and aspirations. With years of experience in the real estate industry, we specialize in residential, commercial, and investment properties in Bhubaneswar and surrounding areas. Our team of experts is committed to providing personalized service, transparent processes, and unmatched expertise to make your property journey seamless and rewarding.
+          At <span className="font-semibold">Property Bundle</span>, we are dedicated to helping you find the perfect property that matches your lifestyle and aspirations. With years of experience in the real estate industry, we specialize in residential, commercial, and investment properties in Bhubaneswar and surrounding areas. Our team of experts is committed to providing personalized service, transparent processes, and unmatched expertise to make your property journey seamless and rewarding.
         </p>
         <p
           data-aos="fade-up"
@@ -143,7 +143,7 @@ const About = () => {
 
         {/* Features List */}
         <div data-aos="fade-up" data-aos-delay="700" className="w-full">
-          <h3 className="font-semibold text-lg mb-3">Why Choose HomeDeal?</h3>
+          <h3 className="font-semibold text-lg mb-3">Why Choose Property Bundle?</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             {features.map((feature, index) => (
               <div key={index} className="flex items-center gap-2">
