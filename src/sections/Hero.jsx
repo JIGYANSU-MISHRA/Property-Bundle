@@ -157,40 +157,40 @@ const Hero = () => {
       <div className={`${darkMode ? "dark bg-black" : "light bg-white"}`}>
         <section
           id="hero"
-          className={`w-full ${darkMode ? 'h-[660px]' : 'h-[600px]'} mt-5 m-auto bg-cover bg-center flex justify-center flex-col items-start lg:px-28 px-10 gap-7 z-10 relative`}
+          className={`w-full min-h-[500px] sm:min-h-[550px] md:min-h-[600px] lg:h-[660px] mt-5 m-auto bg-cover bg-center flex justify-center flex-col items-start px-4 sm:px-6 md:px-10 lg:px-20 xl:px-28 gap-4 sm:gap-6 lg:gap-7 z-10 relative py-12 sm:py-16 lg:py-0`}
           style={{ backgroundImage: `url(${heroimg})` }}
         >
           {/* Overlay for better text readability */}
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
           
-          <div className="relative z-10">
+          <div className="relative z-10 w-full max-w-7xl">
             <h1
               data-aos="zoom-in"
-              className="text-7xl text-white font-semibold lg:pr-[500px] pr-0 lg:leading-[80px] leading-[70px]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-semibold lg:pr-[500px] pr-0 leading-tight sm:leading-snug md:leading-[60px] lg:leading-[70px] xl:leading-[80px]"
             >
               Discover Your Dream Home in India
             </h1>
 
             <p
               data-aos="zoom-in"
-              className="text-white text-xl lg:pr-[500px] pr-0 mt-4"
+              className="text-white text-sm sm:text-base md:text-lg lg:text-xl lg:pr-[500px] pr-0 mt-3 sm:mt-4 leading-relaxed"
             >
               Whether you're looking to buy, rent, or invest, we offer a wide range of properties across India. From luxurious apartments to spacious villas, find the perfect home that suits your lifestyle.
             </p>
 
             {/* Quick Stats */}
-            <div className="flex gap-8 mt-8">
+            <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8 mt-6 sm:mt-8">
               <div className="text-white">
-                <div className="text-3xl font-bold">50+</div>
-                <div className="text-sm">Properties</div>
+                <div className="text-2xl sm:text-3xl font-bold">50+</div>
+                <div className="text-xs sm:text-sm">Properties</div>
               </div>
               <div className="text-white">
-                <div className="text-3xl font-bold">25+</div>
-                <div className="text-sm">Happy Clients</div>
+                <div className="text-2xl sm:text-3xl font-bold">25+</div>
+                <div className="text-xs sm:text-sm">Happy Clients</div>
               </div>
               <div className="text-white">
-                <div className="text-3xl font-bold">₹5Cr+</div>
-                <div className="text-sm">Property Value</div>
+                <div className="text-2xl sm:text-3xl font-bold">₹5Cr+</div>
+                <div className="text-xs sm:text-sm">Property Value</div>
               </div>
             </div>
           </div>
@@ -208,7 +208,7 @@ const Hero = () => {
           id="form"
           className={`${
             darkMode ? "dark bg-gray-900/95 backdrop-blur-sm" : "light bg-white/95 backdrop-blur-sm"
-          } lg:w-[80%] w-[95%] mx-auto rounded-xl shadow-2xl ${darkMode ? '-mt-24' : '-mt-20'} border border-gray-200 dark:border-gray-700 overflow-hidden relative z-20 transform hover:shadow-3xl transition-shadow duration-300`}
+          } lg:w-[80%] w-[95%] max-w-7xl mx-auto rounded-xl shadow-2xl ${darkMode ? '-mt-12 sm:-mt-16 md:-mt-20 lg:-mt-24' : '-mt-10 sm:-mt-14 md:-mt-18 lg:-mt-20'} border border-gray-200 dark:border-gray-700 overflow-hidden relative z-20 transform hover:shadow-3xl transition-shadow duration-300`}
         >
           {/* Error Message */}
           {searchError && (
@@ -221,11 +221,11 @@ const Hero = () => {
           )}
 
           {/* Basic Search */}
-          <div className="grid lg:grid-cols-4 grid-cols-1 gap-6 p-8">
+          <div className="grid lg:grid-cols-4 grid-cols-1 gap-4 sm:gap-6 p-4 sm:p-6 lg:p-8">
             {/* Location Input */}
             <div className="w-full">
-              <h1 className="text-black font-semibold dark:text-white flex items-center gap-2">
-                <FaMapMarkerAlt className="text-green-600" />
+              <h1 className="text-black font-semibold dark:text-white flex items-center gap-2 text-sm sm:text-base">
+                <FaMapMarkerAlt className="text-green-600 text-sm sm:text-base" />
                 LOCATION
               </h1>
               <input
@@ -233,20 +233,20 @@ const Hero = () => {
                 placeholder="Enter city, neighborhood, or address"
                 value={searchData.location}
                 onChange={(e) => handleSearchChange('location', e.target.value)}
-                className="bg-white dark:bg-gray-800 p-3 w-full mt-2 border rounded-lg border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-lime-500 outline-none"
+                className="bg-white dark:bg-gray-800 p-2.5 sm:p-3 w-full mt-2 border rounded-lg border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-lime-500 outline-none text-sm sm:text-base"
               />
             </div>
 
             {/* Type Dropdown */}
             <div className="w-full">
-              <h1 className="text-black font-semibold dark:text-white flex items-center gap-2">
-                <FaHome className="text-green-600" />
+              <h1 className="text-black font-semibold dark:text-white flex items-center gap-2 text-sm sm:text-base">
+                <FaHome className="text-green-600 text-sm sm:text-base" />
                 TYPE
               </h1>
               <select
                 value={searchData.propertyType}
                 onChange={(e) => handleSearchChange('propertyType', e.target.value)}
-                className="bg-white dark:bg-gray-800 p-3 w-full mt-2 border rounded-lg border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-lime-500 outline-none"
+                className="bg-white dark:bg-gray-800 p-2.5 sm:p-3 w-full mt-2 border rounded-lg border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-lime-500 outline-none text-sm sm:text-base"
               >
                 <option value="">Select Property Type</option>
                 <option value="Rentals">Rentals</option>
@@ -258,11 +258,11 @@ const Hero = () => {
 
             {/* Category Dropdown */}
             <div className="w-full">
-              <h1 className="text-black font-semibold dark:text-white">CATEGORY</h1>
+              <h1 className="text-black font-semibold dark:text-white text-sm sm:text-base">CATEGORY</h1>
               <select
                 value={searchData.category}
                 onChange={(e) => handleSearchChange('category', e.target.value)}
-                className="bg-white dark:bg-gray-800 p-3 w-full mt-2 border rounded-lg border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-lime-500 outline-none"
+                className="bg-white dark:bg-gray-800 p-2.5 sm:p-3 w-full mt-2 border rounded-lg border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-lime-500 outline-none text-sm sm:text-base"
               >
                 <option value="">Property Category</option>
                 <option value="Apartments">Apartments</option>
@@ -279,7 +279,7 @@ const Hero = () => {
               <button 
                 onClick={handleSearch}
                 disabled={isSearching}
-                className="bg-lime-600 dark:bg-lime-700 hover:bg-lime-700 dark:hover:bg-lime-500 text-lg p-3 w-full text-white font-semibold rounded-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-lime-600 dark:bg-lime-700 hover:bg-lime-700 dark:hover:bg-lime-500 text-sm sm:text-base lg:text-lg p-2.5 sm:p-3 w-full text-white font-semibold rounded-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSearching ? (
                   <>
@@ -309,12 +309,12 @@ const Hero = () => {
 
           {/* Advanced Search Options */}
           {showAdvancedSearch && (
-            <div className="border-t border-gray-200 dark:border-gray-700 p-8 bg-gray-50 dark:bg-gray-800">
-              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+            <div className="border-t border-gray-200 dark:border-gray-700 p-4 sm:p-6 lg:p-8 bg-gray-50 dark:bg-gray-800">
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 sm:gap-6">
                 {/* Price Range */}
                 <div className="w-full">
-                  <h1 className="text-black font-semibold dark:text-white flex items-center gap-2">
-                    <FaRupeeSign className="text-green-600" />
+                  <h1 className="text-black font-semibold dark:text-white flex items-center gap-2 text-sm sm:text-base">
+                    <FaRupeeSign className="text-green-600 text-sm sm:text-base" />
                     PRICE RANGE
                   </h1>
                   <div className="flex gap-2 mt-2">
@@ -323,14 +323,14 @@ const Hero = () => {
                       placeholder="Min Price"
                       value={searchData.minPrice}
                       onChange={(e) => handleSearchChange('minPrice', e.target.value)}
-                      className="bg-white dark:bg-gray-800 p-3 w-full border rounded-lg border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-lime-500 outline-none"
+                      className="bg-white dark:bg-gray-800 p-2.5 sm:p-3 w-full border rounded-lg border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-lime-500 outline-none text-sm sm:text-base"
                     />
                     <input
                       type="number"
                       placeholder="Max Price"
                       value={searchData.maxPrice}
                       onChange={(e) => handleSearchChange('maxPrice', e.target.value)}
-                      className="bg-white dark:bg-gray-800 p-3 w-full border rounded-lg border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-lime-500 outline-none"
+                      className="bg-white dark:bg-gray-800 p-2.5 sm:p-3 w-full border rounded-lg border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-lime-500 outline-none text-sm sm:text-base"
                     />
                   </div>
                 </div>

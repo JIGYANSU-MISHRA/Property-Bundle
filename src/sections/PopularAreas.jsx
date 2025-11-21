@@ -150,8 +150,7 @@ const PopularAreas = () => {
     return Array.from({ length: 5 }, (_, i) => (
       <FaStar 
         key={i} 
-        className={i < stars ? "text-yellow-500" : "text-gray-300"} 
-        size={16} 
+        className={`${i < stars ? "text-yellow-500" : "text-gray-300"} w-3 h-3 sm:w-4 sm:h-4`}
       />
     ));
   };
@@ -161,35 +160,35 @@ const PopularAreas = () => {
       <div
         className={`${
           darkMode ? "bg-black text-white" : "bg-gray-100 text-black"
-        } py-20`}
+        } py-12 sm:py-16 lg:py-20`}
       >
-        <section className="w-full max-w-7xl mx-auto px-6 lg:px-16">
+        <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           {/* Header Section */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-12 lg:mb-16">
             <h1
               data-aos="fade-up"
-              className="text-green-500 font-semibold tracking-widest"
+              className="text-green-500 font-semibold tracking-widest text-xs sm:text-sm md:text-base"
             >
               POPULAR AREAS
             </h1>
             <h2
               data-aos="fade-up"
               data-aos-delay="200"
-              className="text-3xl lg:text-5xl font-bold mt-4 leading-snug"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-3 sm:mt-4 leading-tight sm:leading-snug px-2"
             >
               Explore Most Popular Areas
             </h2>
             <p
               data-aos="fade-up"
               data-aos-delay="400"
-              className="text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto"
+              className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-3 sm:mt-4 max-w-2xl mx-auto px-2"
             >
               Discover the most sought-after locations with excellent investment potential and lifestyle amenities.
             </p>
           </div>
 
           {/* Interactive Area Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-12 lg:mb-16">
             {areas.map((area, index) => (
               <div
                 key={index}
@@ -200,32 +199,32 @@ const PopularAreas = () => {
                 onMouseLeave={() => setHoveredArea(null)}
                 onClick={() => setSelectedArea(selectedArea === index ? null : index)}
               >
-                                 <div className="h-96 bg-cover bg-center rounded-xl shadow-lg transform transition duration-300 hover:scale-105 relative overflow-hidden"
+                                 <div className="h-64 sm:h-80 lg:h-96 bg-cover bg-center rounded-xl shadow-lg transform transition duration-300 hover:scale-105 relative overflow-hidden"
                    style={{ backgroundImage: `url(${area.image})` }}
                  >
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                   
                   {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-bold mb-2">{area.name}</h3>
-                    <p className="text-sm text-gray-200 mb-3">{area.description}</p>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 lg:p-6 text-white">
+                    <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 line-clamp-1">{area.name}</h3>
+                    <p className="text-xs sm:text-sm text-gray-200 mb-2 sm:mb-3 line-clamp-2">{area.description}</p>
                     
-                    <div className="flex justify-between items-center mb-3">
-                      <div className="flex items-center gap-2">
-                        <FaHome className="text-green-400" />
-                        <span className="text-sm">{area.properties} properties</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0 mb-2 sm:mb-3">
+                      <div className="flex items-center gap-1.5 sm:gap-2">
+                        <FaHome className="text-green-400 text-sm sm:text-base flex-shrink-0" />
+                        <span className="text-xs sm:text-sm">{area.properties} properties</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <FaRupeeSign className="text-green-400" />
-                        <span className="text-sm">{area.avgPrice}</span>
+                      <div className="flex items-center gap-1.5 sm:gap-2">
+                        <FaRupeeSign className="text-green-400 text-sm sm:text-base flex-shrink-0" />
+                        <span className="text-xs sm:text-sm">{area.avgPrice}</span>
                       </div>
                     </div>
 
                     {/* Features */}
-                    <div className="flex flex-wrap gap-1 mb-3">
+                    <div className="flex flex-wrap gap-1 mb-2 sm:mb-3">
                       {area.features.slice(0, 2).map((feature, idx) => (
-                        <span key={idx} className="px-2 py-1 bg-green-600/80 text-xs rounded-full">
+                        <span key={idx} className="px-2 py-0.5 sm:py-1 bg-green-600/80 text-xs rounded-full">
                           {feature}
                         </span>
                       ))}
@@ -234,16 +233,16 @@ const PopularAreas = () => {
                     {/* Hover Effect */}
                     {hoveredArea === index && (
                       <div className="absolute inset-0 bg-black/80 flex items-center justify-center transition-all duration-300">
-                        <div className="text-center">
+                        <div className="text-center px-4">
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
                               handleExploreArea(area);
                             }}
-                            className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2"
+                            className="bg-green-600 text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2 text-sm sm:text-base"
                           >
                             Explore Area
-                            <FaArrowRight className="text-sm" />
+                            <FaArrowRight className="text-xs sm:text-sm" />
                           </button>
                         </div>
                       </div>
@@ -253,15 +252,15 @@ const PopularAreas = () => {
 
                 {/* Expanded Details */}
                 {selectedArea === index && (
-                  <div className="mt-4 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                    <h4 className="font-semibold text-green-600 dark:text-green-400 mb-3">Area Details</h4>
+                  <div className="mt-3 sm:mt-4 bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg">
+                    <h4 className="font-semibold text-sm sm:text-base text-green-600 dark:text-green-400 mb-2 sm:mb-3">Area Details</h4>
                     
-                    <div className="space-y-3">
+                    <div className="space-y-2 sm:space-y-3">
                       <div>
-                        <span className="text-sm text-gray-600 dark:text-gray-300">Property Types:</span>
+                        <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Property Types:</span>
                         <div className="flex flex-wrap gap-1 mt-1">
                           {area.propertyTypes.map((type, idx) => (
-                            <span key={idx} className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-xs rounded">
+                            <span key={idx} className="px-2 py-0.5 sm:py-1 bg-gray-100 dark:bg-gray-700 text-xs rounded">
                               {type}
                             </span>
                           ))}
@@ -269,15 +268,15 @@ const PopularAreas = () => {
                       </div>
                       
                       <div>
-                        <span className="text-sm text-gray-600 dark:text-gray-300">Average Rent:</span>
-                        <p className="font-medium">{area.avgRent}</p>
+                        <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Average Rent:</span>
+                        <p className="font-medium text-sm sm:text-base">{area.avgRent}</p>
                       </div>
                       
                       <div>
-                        <span className="text-sm text-gray-600 dark:text-gray-300">Key Features:</span>
+                        <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Key Features:</span>
                         <div className="flex flex-wrap gap-1 mt-1">
                           {area.features.map((feature, idx) => (
-                            <span key={idx} className="px-2 py-1 bg-green-100 dark:bg-green-900 text-xs rounded">
+                            <span key={idx} className="px-2 py-0.5 sm:py-1 bg-green-100 dark:bg-green-900 text-xs rounded">
                               {feature}
                             </span>
                           ))}
@@ -291,24 +290,24 @@ const PopularAreas = () => {
           </div>
 
           {/* Enhanced Statistics Section */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12 lg:mb-16">
             {statistics.map((stat, index) => (
               <div
                 key={index}
                 data-aos="fade-up"
                 data-aos-delay={200 * (index + 1)}
-                className="flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-800 shadow-lg rounded-xl hover:shadow-xl transition-shadow duration-300 group"
+                className="flex flex-col items-center justify-center p-4 sm:p-5 lg:p-6 bg-white dark:bg-gray-800 shadow-lg rounded-xl hover:shadow-xl transition-shadow duration-300 group"
               >
-                <div className="p-4 rounded-full bg-green-100 dark:bg-green-900 mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="text-green-600 dark:text-green-400 text-2xl" />
+                <div className="p-3 sm:p-4 rounded-full bg-green-100 dark:bg-green-900 mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <stat.icon className="text-green-600 dark:text-green-400 text-xl sm:text-2xl" />
                 </div>
-                <h1 className="text-4xl font-extrabold text-green-600 dark:text-green-400 mb-2">
+                <h1 className="text-3xl sm:text-4xl font-extrabold text-green-600 dark:text-green-400 mb-1 sm:mb-2">
                   {stat.number}
                 </h1>
-                <p className="text-lg font-semibold text-center mb-2">
+                <p className="text-sm sm:text-base lg:text-lg font-semibold text-center mb-1 sm:mb-2">
                   {stat.label}
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300 text-center">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 text-center">
                   {stat.description}
                 </p>
               </div>
@@ -316,22 +315,22 @@ const PopularAreas = () => {
           </div>
 
           {/* Market Insights */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-green-600 dark:text-green-400 mb-6 text-center">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg">
+            <h3 className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400 mb-4 sm:mb-6 text-center">
               Market Insights
             </h3>
-            <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
+            <div className="grid md:grid-cols-3 grid-cols-1 gap-4 sm:gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">15%</div>
-                <div className="text-sm text-gray-600 dark:text-gray-300">Average Annual Appreciation</div>
+                <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400 mb-1 sm:mb-2">15%</div>
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Average Annual Appreciation</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">8.5%</div>
-                <div className="text-sm text-gray-600 dark:text-gray-300">Average Rental Yield</div>
+                <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400 mb-1 sm:mb-2">8.5%</div>
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Average Rental Yield</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">92%</div>
-                <div className="text-sm text-gray-600 dark:text-gray-300">Customer Satisfaction Rate</div>
+                <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400 mb-1 sm:mb-2">92%</div>
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Customer Satisfaction Rate</div>
               </div>
             </div>
           </div>
@@ -340,164 +339,165 @@ const PopularAreas = () => {
 
       {/* Area Details Modal */}
       {showModal && modalArea && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4" onClick={closeModal}>
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Modal Header */}
             <div className="relative">
               <div 
-                className="h-64 bg-cover bg-center rounded-t-xl"
+                className="h-48 sm:h-56 md:h-64 bg-cover bg-center rounded-t-xl"
                 style={{ backgroundImage: `url(${modalArea.image})` }}
               >
                 <div className="absolute inset-0 bg-black bg-opacity-40 rounded-t-xl"></div>
-                <div className="absolute top-4 right-4">
+                <div className="absolute top-2 sm:top-4 right-2 sm:right-4">
                   <button
                     onClick={closeModal}
-                    className="bg-white dark:bg-gray-800 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    className="bg-white dark:bg-gray-800 p-1.5 sm:p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    aria-label="Close modal"
                   >
-                    <FaTimes className="text-gray-600 dark:text-gray-300" />
+                    <FaTimes className="text-gray-600 dark:text-gray-300 text-sm sm:text-base" />
                   </button>
                 </div>
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h2 className="text-3xl font-bold mb-2">{modalArea.name}</h2>
-                  <p className="text-lg">{modalArea.description}</p>
+                <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4 text-white">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">{modalArea.name}</h2>
+                  <p className="text-sm sm:text-base md:text-lg">{modalArea.description}</p>
                 </div>
               </div>
             </div>
 
             {/* Modal Content */}
-            <div className="p-8">
+            <div className="p-4 sm:p-6 md:p-8">
               {/* Quick Stats */}
-              <div className="grid grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600 dark:text-green-400">{modalArea.properties}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">Properties</div>
+                  <div className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">{modalArea.properties}</div>
+                  <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Properties</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600 dark:text-green-400">{modalArea.avgPrice}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">Avg Price</div>
+                  <div className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400 break-words">{modalArea.avgPrice}</div>
+                  <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Avg Price</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600 dark:text-green-400">{modalArea.avgRent}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">Avg Rent</div>
+                  <div className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400 break-words">{modalArea.avgRent}</div>
+                  <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Avg Rent</div>
                 </div>
               </div>
 
               {/* Investment Scores */}
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                <div className="bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
-                    <FaChartLine className="text-green-600" />
-                    <h3 className="font-semibold">Investment Score</h3>
+                    <FaChartLine className="text-green-600 text-sm sm:text-base flex-shrink-0" />
+                    <h3 className="font-semibold text-sm sm:text-base">Investment Score</h3>
                   </div>
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
                     {renderStars(modalArea.details.investmentScore)}
-                    <span className="text-lg font-bold text-green-600 dark:text-green-400">
+                    <span className="text-base sm:text-lg font-bold text-green-600 dark:text-green-400">
                       {modalArea.details.investmentScore}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                     Excellent investment potential with high returns
                   </p>
                 </div>
 
-                <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                <div className="bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
-                    <FaUsers className="text-green-600" />
-                    <h3 className="font-semibold">Lifestyle Score</h3>
+                    <FaUsers className="text-green-600 text-sm sm:text-base flex-shrink-0" />
+                    <h3 className="font-semibold text-sm sm:text-base">Lifestyle Score</h3>
                   </div>
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
                     {renderStars(modalArea.details.lifestyleScore)}
-                    <span className="text-lg font-bold text-green-600 dark:text-green-400">
+                    <span className="text-base sm:text-lg font-bold text-green-600 dark:text-green-400">
                       {modalArea.details.lifestyleScore}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                     Great amenities and quality of life
                   </p>
                 </div>
 
-                <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                <div className="bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 rounded-lg sm:col-span-2 md:col-span-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <FaBuilding className="text-green-600" />
-                    <h3 className="font-semibold">Connectivity Score</h3>
+                    <FaBuilding className="text-green-600 text-sm sm:text-base flex-shrink-0" />
+                    <h3 className="font-semibold text-sm sm:text-base">Connectivity Score</h3>
                   </div>
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
                     {renderStars(modalArea.details.connectivityScore)}
-                    <span className="text-lg font-bold text-green-600 dark:text-green-400">
+                    <span className="text-base sm:text-lg font-bold text-green-600 dark:text-green-400">
                       {modalArea.details.connectivityScore}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                     Excellent transport and infrastructure
                   </p>
                 </div>
               </div>
 
               {/* Area Details */}
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
                 <div>
-                  <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">Area Demographics</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Population:</span>
-                      <span className="font-semibold">{modalArea.details.population}</span>
+                  <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800 dark:text-white">Area Demographics</h3>
+                  <div className="space-y-2 sm:space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                      <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Population:</span>
+                      <span className="font-semibold text-xs sm:text-sm">{modalArea.details.population}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Average Age:</span>
-                      <span className="font-semibold">{modalArea.details.avgAge}</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                      <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Average Age:</span>
+                      <span className="font-semibold text-xs sm:text-sm">{modalArea.details.avgAge}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Crime Rate:</span>
-                      <span className="font-semibold">{modalArea.details.crimeRate}</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                      <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Crime Rate:</span>
+                      <span className="font-semibold text-xs sm:text-sm">{modalArea.details.crimeRate}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Annual Appreciation:</span>
-                      <span className="font-semibold text-green-600 dark:text-green-400">{modalArea.details.annualAppreciation}</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                      <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Annual Appreciation:</span>
+                      <span className="font-semibold text-xs sm:text-sm text-green-600 dark:text-green-400">{modalArea.details.annualAppreciation}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Rental Yield:</span>
-                      <span className="font-semibold text-green-600 dark:text-green-400">{modalArea.details.rentalYield}</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                      <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Rental Yield:</span>
+                      <span className="font-semibold text-xs sm:text-sm text-green-600 dark:text-green-400">{modalArea.details.rentalYield}</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">Amenities</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Schools:</span>
-                      <span className="font-semibold">{modalArea.details.schools}</span>
+                  <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800 dark:text-white">Amenities</h3>
+                  <div className="space-y-2 sm:space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                      <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Schools:</span>
+                      <span className="font-semibold text-xs sm:text-sm">{modalArea.details.schools}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Hospitals:</span>
-                      <span className="font-semibold">{modalArea.details.hospitals}</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                      <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Hospitals:</span>
+                      <span className="font-semibold text-xs sm:text-sm">{modalArea.details.hospitals}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Shopping Malls:</span>
-                      <span className="font-semibold">{modalArea.details.shoppingMalls}</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                      <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Shopping Malls:</span>
+                      <span className="font-semibold text-xs sm:text-sm">{modalArea.details.shoppingMalls}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Metro Stations:</span>
-                      <span className="font-semibold">{modalArea.details.metroStations}</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                      <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Metro Stations:</span>
+                      <span className="font-semibold text-xs sm:text-sm">{modalArea.details.metroStations}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Parks:</span>
-                      <span className="font-semibold">{modalArea.details.parks}</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                      <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Parks:</span>
+                      <span className="font-semibold text-xs sm:text-sm">{modalArea.details.parks}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-300">Restaurants:</span>
-                      <span className="font-semibold">{modalArea.details.restaurants}</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                      <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Restaurants:</span>
+                      <span className="font-semibold text-xs sm:text-sm">{modalArea.details.restaurants}</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Property Types */}
-              <div className="mt-8">
-                <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">Available Property Types</h3>
+              <div className="mt-6 sm:mt-8">
+                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800 dark:text-white">Available Property Types</h3>
                 <div className="flex flex-wrap gap-2">
                   {modalArea.propertyTypes.map((type, index) => (
-                    <span key={index} className="px-4 py-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-lg font-medium">
+                    <span key={index} className="px-3 sm:px-4 py-1.5 sm:py-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-lg font-medium text-xs sm:text-sm">
                       {type}
                     </span>
                   ))}
@@ -505,11 +505,11 @@ const PopularAreas = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex gap-4 mt-8">
-                <button className="flex-1 bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors font-semibold">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8">
+                <button className="flex-1 bg-green-600 text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg hover:bg-green-700 transition-colors font-semibold text-sm sm:text-base">
                   View Properties
                 </button>
-                <button className="flex-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-3 px-6 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-semibold">
+                <button className="flex-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-semibold text-sm sm:text-base">
                   Download Report
                 </button>
               </div>
