@@ -134,14 +134,14 @@ const Footer = () => {
 
             {/* Newsletter */}
             <h2 className="text-white text-lg font-semibold">Subscribe for updates</h2>
-            <form className="w-full flex gap-2" onSubmit={(e) => e.preventDefault()}>
+            <form className="w-full flex flex-col lg:flex-row gap-2" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="email"
                 required
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-600"
+                className="w-full lg:flex-1 px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-600"
               />
-              <button className="px-5 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold">
+              <button className="w-full lg:w-auto px-5 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold whitespace-nowrap">
                 Subscribe
               </button>
             </form>
