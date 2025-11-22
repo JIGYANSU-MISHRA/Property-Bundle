@@ -84,7 +84,7 @@ const About = () => {
         <img
           src={aboutimg}
           alt="About Us"
-          className="rounded-2xl w-full max-w-full sm:max-w-[400px] md:max-w-[450px] lg:max-w-[500px] h-auto object-cover shadow-lg"
+          className="rounded-2xl w-full max-w-full sm:max-w-[400px] md:max-w-[450px] lg:max-w-[500px] h-auto max-h-[450px] sm:max-h-[500px] md:max-h-[450px] lg:max-h-[500px] xl:max-h-[550px] object-fit shadow-lg"
         />
       </div>
 
