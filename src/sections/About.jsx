@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDarkMode } from "../components/DarkModeContext";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import aboutimg from "../assets/images/about.jpg";
 import {
   FaUsers,
@@ -14,15 +12,6 @@ import {
 
 const About = () => {
   const [activeTab, setActiveTab] = useState("mission");
-
-  useEffect(() => {
-    AOS.init({
-      offset: 200,
-      duration: 600,
-      easing: "ease-in-sine",
-      delay: 100,
-    });
-  }, []);
 
   const { darkMode } = useDarkMode();
 
@@ -88,38 +77,33 @@ const About = () => {
       id="about"
       className={`${
         darkMode ? "dark bg-black text-white" : "light bg-transparent text-black"
-      } w-full m-auto lg:px-40 md:px-20 px-6 py-14 grid lg:grid-cols-2 grid-cols-1 items-center gap-12`}
+      } w-full m-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 2xl:px-40 py-10 sm:py-12 md:py-14 grid lg:grid-cols-2 grid-cols-1 items-center gap-8 sm:gap-10 md:gap-12`}
     >
       {/* Image Section */}
-      <div data-aos="zoom-in" className="relative flex justify-center">
+      <div className="relative flex justify-center w-full">
         <img
           src={aboutimg}
           alt="About Us"
-          className="rounded-2xl w-full max-w-[500px] h-auto object-cover shadow-lg"
+          className="rounded-2xl w-full max-w-full sm:max-w-[400px] md:max-w-[450px] lg:max-w-[500px] h-auto object-cover shadow-lg"
         />
       </div>
 
       {/* Content Section */}
       <div className="flex flex-col justify-center items-start gap-6">
         <h1
-          data-aos="fade-up"
-          className="text-green-500 font-bold tracking-widest text-sm md:text-base"
+          className="text-green-500 font-bold tracking-widest text-xs sm:text-sm md:text-base"
         >
           ABOUT US
         </h1>
 
         <h1
-          data-aos="fade-up"
-          data-aos-delay="200"
-          className="text-3xl md:text-4xl font-semibold leading-snug"
+          className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-semibold leading-snug"
         >
           Your Trusted Partner in Real Estate
         </h1>
 
         <p
-          data-aos="fade-up"
-          data-aos-delay="400"
-          className="text-base md:text-lg text-gray-600 dark:text-gray-300 text-justify"
+          className="text-sm sm:text-base md:text-base lg:text-lg text-gray-600 dark:text-gray-300 text-justify"
         >
           At <span className="font-semibold">Property Bundle</span>, we are
           dedicated to helping you find the perfect property. With years of
@@ -128,16 +112,14 @@ const About = () => {
         </p>
 
         <p
-          data-aos="fade-up"
-          data-aos-delay="500"
-          className="text-base md:text-lg text-gray-600 dark:text-gray-300 text-justify"
+          className="text-sm sm:text-base md:text-base lg:text-lg text-gray-600 dark:text-gray-300 text-justify"
         >
           Whether you're buying, selling, or renting, we guide you every step of
           the way with transparency, innovation, and expertise.
         </p>
 
         {/* Tabs */}
-        <div data-aos="fade-up" data-aos-delay="600" className="w-full">
+        <div className="w-full">
           <div className="flex gap-2 mb-4 overflow-x-auto pb-2">
             {tabs.map((tab) => (
               <button
@@ -162,7 +144,7 @@ const About = () => {
         </div>
 
         {/* Features */}
-        <div data-aos="fade-up" data-aos-delay="700" className="w-full">
+        <div className="w-full">
           <h3 className="font-semibold text-lg mb-3">
             Why Choose Property Bundle?
           </h3>
@@ -180,8 +162,6 @@ const About = () => {
 
         {/* Button */}
         <button
-          data-aos="fade-up"
-          data-aos-delay="800"
           className="bg-lime-600 dark:bg-lime-700 hover:bg-lime-700 dark:hover:bg-lime-500 px-6 py-3 text-white font-semibold rounded-lg transition-all transform hover:scale-105 flex items-center gap-2 shadow-md"
         >
           LEARN MORE
@@ -190,13 +170,11 @@ const About = () => {
       </div>
 
       {/* Stats */}
-      <div className="lg:col-span-2 mt-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="lg:col-span-2 mt-10 sm:mt-12 md:mt-14">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
           {companyStats.map((stat, index) => (
             <div
               key={index}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
               className="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               <div className="p-4 rounded-full bg-green-100 dark:bg-green-900 mx-auto mb-4 w-fit transition-transform">

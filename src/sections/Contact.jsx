@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDarkMode } from "../components/DarkModeContext";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { 
   FaPhone, 
   FaEnvelope, 
@@ -25,15 +23,6 @@ const Contact = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-
-  useEffect(() => {
-    AOS.init({
-      offset: 150,
-      duration: 600,
-      easing: "ease-in-out",
-      delay: 100,
-    });
-  }, []);
 
   const { darkMode} = useDarkMode();
 
@@ -140,24 +129,21 @@ const Contact = () => {
     <div className={`${darkMode ? "dark bg-black" : "light bg-transparent"} pb-20`}>
       <section
         id="contact"
-        data-aos="fade-up"
         className={`${
           darkMode ? "dark bg-gray-800" : "light bg-green-100"
         } lg:w-[95%] w-full h-fit m-auto rounded-xl px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36 py-12 sm:py-16 lg:py-20 gap-8 sm:gap-10`}
       >
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h1 data-aos="zoom-in" className="text-green-500 dark:text-white uppercase tracking-widest text-xs sm:text-sm md:text-base">
+          <h1 className="text-green-500 dark:text-white uppercase tracking-widest text-xs sm:text-sm md:text-base">
             Contact Us
           </h1>
           <h2
-            data-aos="zoom-in"
-            data-aos-delay="200"
             className="text-black text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-semibold leading-tight sm:leading-snug md:leading-10 dark:text-white mt-3 sm:mt-4 px-2"
           >
             Get in touch with us today
           </h2>
-          <p data-aos="zoom-in" data-aos-delay="400" className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto mt-3 sm:mt-4 px-2">
+          <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto mt-3 sm:mt-4 px-2">
             If you have any questions or need further information, feel free to reach out to us. We are here to help you find your dream property.
           </p>
         </div>
@@ -165,7 +151,6 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 sm:gap-8 lg:gap-10">
           {/* Form Section */}
           <div
-            data-aos="zoom-in"
             className="bg-white dark:bg-black p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col justify-center items-start gap-3 sm:gap-4 rounded-xl w-full shadow-lg"
           >
             <h1 className="text-xl sm:text-2xl text-black font-semibold dark:text-white mb-3 sm:mb-4">Send us a message</h1>
@@ -256,16 +241,15 @@ const Contact = () => {
 
           {/* Contact Info Section */}
           <div className="flex flex-col justify-center items-start gap-6 sm:gap-8 lg:p-12 xl:p-20 p-4 sm:p-6">
-            <h1 data-aos="fade-up" className="text-green-500 dark:text-white uppercase tracking-widest text-xs sm:text-sm md:text-base">
+            <h1 className="text-green-500 dark:text-white uppercase tracking-widest text-xs sm:text-sm md:text-base">
               Reach Us
             </h1>
             <h1
-              data-aos="fade-up"
               className="text-black text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-semibold leading-tight sm:leading-snug md:leading-10 dark:text-white"
             >
               Multiple ways to connect
             </h1>
-            <p data-aos="fade-up" className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               Choose the most convenient way to reach us. We're here to help you with all your real estate needs.
             </p>
 
@@ -274,8 +258,6 @@ const Contact = () => {
               {contactMethods.map((method, index) => (
                 <div
                   key={index}
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
                   className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
                 >
                   <div className={`p-2 sm:p-3 rounded-full bg-gray-100 dark:bg-gray-700 ${method.color} flex-shrink-0`}>
@@ -294,7 +276,7 @@ const Contact = () => {
             </div>
 
             {/* Office Hours */}
-            <div data-aos="fade-up" className="w-full bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
+            <div className="w-full bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
               <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                 <FaClock className="text-green-600 text-lg sm:text-xl flex-shrink-0" />
                 <h3 className="font-semibold text-sm sm:text-base text-black dark:text-white">Office Hours</h3>
@@ -316,7 +298,7 @@ const Contact = () => {
             </div>
 
             {/* Social Links */}
-            <div data-aos="fade-up" className="w-full">
+            <div className="w-full">
               <h3 className="font-semibold text-sm sm:text-base text-black dark:text-white mb-3 sm:mb-4">Follow Us</h3>
               <div className="flex gap-3 sm:gap-4">
                 {socialLinks.map((social, index) => (

@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDarkMode } from "../components/DarkModeContext";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import area1 from "../assets/images/area1.jpg";
 import area2 from "../assets/images/area2.jpg";
 import area3 from "../assets/images/area3.jpg";
@@ -12,15 +10,6 @@ const PopularAreas = () => {
   const [selectedArea, setSelectedArea] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [modalArea, setModalArea] = useState(null);
-
-  useEffect(() => {
-    AOS.init({
-      offset: 150,
-      duration: 600,
-      easing: "ease-in-out",
-      delay: 100,
-    });
-  }, []);
 
   const { darkMode} = useDarkMode();
 
@@ -166,21 +155,16 @@ const PopularAreas = () => {
           {/* Header Section */}
           <div className="text-center mb-10 sm:mb-12 lg:mb-16">
             <h1
-              data-aos="fade-up"
               className="text-green-500 font-semibold tracking-widest text-xs sm:text-sm md:text-base"
             >
               POPULAR AREAS
             </h1>
             <h2
-              data-aos="fade-up"
-              data-aos-delay="200"
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-3 sm:mt-4 leading-tight sm:leading-snug px-2"
             >
               Explore Most Popular Areas
             </h2>
             <p
-              data-aos="fade-up"
-              data-aos-delay="400"
               className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-3 sm:mt-4 max-w-2xl mx-auto px-2"
             >
               Discover the most sought-after locations with excellent investment potential and lifestyle amenities.
@@ -192,14 +176,12 @@ const PopularAreas = () => {
             {areas.map((area, index) => (
               <div
                 key={index}
-                data-aos="zoom-in"
-                data-aos-delay={200 * (index + 1)}
                 className="relative group cursor-pointer"
                 onMouseEnter={() => setHoveredArea(index)}
                 onMouseLeave={() => setHoveredArea(null)}
                 onClick={() => setSelectedArea(selectedArea === index ? null : index)}
               >
-                                 <div className="h-64 sm:h-80 lg:h-96 bg-cover bg-center rounded-xl shadow-lg transform transition duration-300 hover:scale-105 relative overflow-hidden"
+                                 <div className="h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 bg-cover bg-center rounded-xl shadow-lg transform transition duration-300 hover:scale-105 relative overflow-hidden"
                    style={{ backgroundImage: `url(${area.image})` }}
                  >
                   {/* Overlay */}
@@ -294,8 +276,6 @@ const PopularAreas = () => {
             {statistics.map((stat, index) => (
               <div
                 key={index}
-                data-aos="fade-up"
-                data-aos-delay={200 * (index + 1)}
                 className="flex flex-col items-center justify-center p-4 sm:p-5 lg:p-6 bg-white dark:bg-gray-800 shadow-lg rounded-xl hover:shadow-xl transition-shadow duration-300 group"
               >
                 <div className="p-3 sm:p-4 rounded-full bg-green-100 dark:bg-green-900 mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -340,11 +320,11 @@ const PopularAreas = () => {
       {/* Area Details Modal */}
       {showModal && modalArea && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4" onClick={closeModal}>
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             {/* Modal Header */}
             <div className="relative">
               <div 
-                className="h-48 sm:h-56 md:h-64 bg-cover bg-center rounded-t-xl"
+                className="h-40 sm:h-48 md:h-56 lg:h-64 bg-cover bg-center rounded-t-xl"
                 style={{ backgroundImage: `url(${modalArea.image})` }}
               >
                 <div className="absolute inset-0 bg-black bg-opacity-40 rounded-t-xl"></div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDarkMode } from "../components/DarkModeContext";
 import { property } from "../components/export";
 import {
@@ -27,8 +27,6 @@ import {
   FaBuilding,
 } from "react-icons/fa";
 import { MdSpaceDashboard } from "react-icons/md";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const Properties = () => {
   const [filteredProperties, setFilteredProperties] = useState(property);
@@ -45,15 +43,6 @@ const Properties = () => {
   const [activeFilters, setActiveFilters] = useState([]);
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {
-    AOS.init({
-      offset: 150,
-      duration: 600,
-      easing: "ease-in-out",
-      delay: 100,
-    });
-  }, []);
 
   const { darkMode} = useDarkMode();
 
@@ -196,11 +185,10 @@ const Properties = () => {
         className="lg:w-[90%] w-full m-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-12 sm:py-16 lg:py-20 flex flex-col gap-6 sm:gap-8 lg:gap-10"
       >
         <div className="flex flex-col items-start gap-3 sm:gap-4">
-          <h1 data-aos="zoom-in" className="text-green-500 dark:text-green-400 text-xs sm:text-sm md:text-base uppercase tracking-widest">
+          <h1 className="text-green-500 dark:text-green-400 text-xs sm:text-sm md:text-base uppercase tracking-widest">
             PROPERTIES
           </h1>
           <h1
-            data-aos="zoom-in"
             className="text-2xl sm:text-3xl md:text-4xl font-semibold"
           >
             Explore the latest
@@ -325,13 +313,11 @@ const Properties = () => {
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 sm:gap-6 lg:gap-8">
           {filteredProperties.map((item, index) => (
             <div
-              data-aos="zoom-in"
-              data-aos-delay="200"
               key={index}
               className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden"
             >
               <div
-                className="bg-cover bg-center h-[200px] sm:h-[220px] md:h-[240px] lg:h-[250px] rounded-xl p-3 sm:p-4 flex flex-col justify-between relative"
+                className="bg-cover bg-center h-[180px] sm:h-[200px] md:h-[220px] lg:h-[240px] xl:h-[250px] rounded-xl p-3 sm:p-4 flex flex-col justify-between relative"
                 style={{ backgroundImage: `url(${item.images})` }}
               >
                 <div className="flex justify-between items-start">
@@ -474,13 +460,13 @@ const Properties = () => {
           onClick={closeModal}
         >
           <div 
-            className="bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl shadow-2xl max-w-6xl w-full max-h-[98vh] sm:max-h-[95vh] overflow-y-auto relative my-2 sm:my-4"
+            className="bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl shadow-2xl max-w-full sm:max-w-xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl w-full max-h-[98vh] sm:max-h-[95vh] overflow-y-auto relative my-2 sm:my-4"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header with Image */}
             <div className="relative">
               <div 
-                className="h-48 sm:h-56 md:h-64 lg:h-80 bg-cover bg-center rounded-t-lg sm:rounded-t-xl"
+                className="h-40 sm:h-48 md:h-56 lg:h-72 xl:h-80 bg-cover bg-center rounded-t-lg sm:rounded-t-xl"
                 style={{ backgroundImage: `url(${selectedProperty.images})` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-t-lg sm:rounded-t-xl"></div>

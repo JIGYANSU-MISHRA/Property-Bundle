@@ -1,22 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { service } from "../components/export";
 import { useDarkMode } from "../components/DarkModeContext";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { FaArrowRight, FaCheck } from "react-icons/fa";
 
 const Services = () => {
   const [hoveredService, setHoveredService] = useState(null);
   const [expandedService, setExpandedService] = useState(null);
-
-  useEffect(() => {
-    AOS.init({
-      offset: 150,
-      duration: 600,
-      easing: "ease-in-out",
-      delay: 100,
-    });
-  }, []);
 
   const { darkMode} = useDarkMode();
 
@@ -38,15 +27,13 @@ const Services = () => {
         <div className="pointer-events-none absolute inset-0 opacity-10 bg-gradient-to-br from-green-200 via-transparent to-green-300 dark:from-green-900 dark:to-green-800" />
 
         <div className="relative flex flex-col justify-center items-center gap-3 sm:gap-4 w-full">
-          <span data-aos="zoom-in" className="text-green-600 dark:text-green-400 tracking-widest font-semibold uppercase text-xs sm:text-sm md:text-base">Our Services</span>
+          <span className="text-green-600 dark:text-green-400 tracking-widest font-semibold uppercase text-xs sm:text-sm md:text-base">Our Services</span>
           <h2
-            data-aos="zoom-in"
             className="text-black text-2xl sm:text-3xl md:text-[34px] lg:text-[40px] font-semibold leading-tight dark:text-white text-center px-2"
           >
             Everything you need for a seamless property journey
           </h2>
           <p
-            data-aos="zoom-in"
             className="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-center max-w-3xl px-2"
           >
             From valuation to legal support and professional marketing, our end‑to‑end services help you buy, sell, and invest with confidence.
@@ -63,8 +50,6 @@ const Services = () => {
 
             return (
               <div 
-                data-aos="zoom-in" 
-                data-aos-delay="200" 
                 key={index} 
                 className={`bg-white dark:bg-gray-800 h-auto px-4 sm:px-6 md:px-8 py-10 sm:py-12 md:py-14 lg:py-16 flex flex-col justify-center items-start gap-3 sm:gap-4 rounded-xl border border-gray-100 dark:border-gray-700 hover:border-green-600/40 cursor-pointer transition-all duration-500 ease-out transform hover:scale-[1.015] hover:-translate-y-1 hover:shadow-2xl relative overflow-hidden group`}
                 onMouseEnter={() => setHoveredService(index)}
@@ -110,7 +95,7 @@ const Services = () => {
         {/* Additional Services Info */}
         <div className="w-full mt-10 sm:mt-12 lg:mt-16 relative z-10">
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 sm:gap-8">
-            <div data-aos="fade-right" className="bg-white dark:bg-gray-800 p-5 sm:p-6 md:p-8 rounded-xl shadow-lg">
+            <div className="bg-white dark:bg-gray-800 p-5 sm:p-6 md:p-8 rounded-xl shadow-lg">
               <h3 className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400 mb-3 sm:mb-4">
                 Why Choose Our Services?
               </h3>
@@ -140,7 +125,7 @@ const Services = () => {
               </div>
             </div>
 
-            <div data-aos="fade-left" className="bg-white dark:bg-gray-800 p-5 sm:p-6 md:p-8 rounded-xl shadow-lg">
+            <div className="bg-white dark:bg-gray-800 p-5 sm:p-6 md:p-8 rounded-xl shadow-lg">
               <h3 className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400 mb-3 sm:mb-4">
                 Our Success Metrics
               </h3>

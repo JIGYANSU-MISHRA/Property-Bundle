@@ -1,22 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { client } from "../components/export";
 import { useDarkMode } from "../components/DarkModeContext";
 import { FaStar, FaMapMarkerAlt, FaHome, FaQuoteLeft } from "react-icons/fa";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const Client = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [filter, setFilter] = useState("all");
-
-  useEffect(() => {
-    AOS.init({
-      offset: 100,
-      duration: 600,
-      easing: "ease-in-out",
-      delay: 100,
-    });
-  }, []);
 
   const { darkMode } = useDarkMode();
 
@@ -49,19 +38,16 @@ const Client = () => {
         {/* Heading */}
         <div className="text-center w-full">
           <h1
-            data-aos="zoom-in"
             className="text-green-500 dark:text-green-400 font-medium text-sm sm:text-base"
           >
             OUR CLIENTS
           </h1>
           <h1
-            data-aos="zoom-in"
             className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mt-2"
           >
             Reviews From Clients
           </h1>
           <p
-            data-aos="zoom-in"
             className="text-gray-600 dark:text-gray-300 mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-base px-4"
           >
             Hear from our satisfied clients who found their dream homes with our expert guidance and personalized service.
@@ -98,8 +84,6 @@ const Client = () => {
         >
           {filteredClients.map((item, index) => (
             <div
-              data-aos="zoom-in"
-              data-aos-delay="100"
               key={index}
               className={`p-4 sm:p-6 lg:p-8 flex flex-col items-center gap-4 sm:gap-6 rounded-lg sm:rounded-xl w-full transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl cursor-pointer
               ${

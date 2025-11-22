@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDarkMode } from "../components/DarkModeContext";
 import heroimg from "../assets/images/hero1.webp";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { FaSearch, FaMapMarkerAlt, FaHome, FaRupeeSign, FaTimes, FaFilter } from "react-icons/fa";
 
 const Hero = () => {
@@ -21,15 +19,6 @@ const Hero = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [searchError, setSearchError] = useState("");
-
-  useEffect(() => {
-    AOS.init({
-      offset: 200,
-      duration: 600,
-      easing: "ease-in-sine",
-      delay: 100,
-    });
-  }, []);
 
   const { darkMode } = useDarkMode();
 
@@ -165,14 +154,12 @@ const Hero = () => {
           
           <div className="relative z-10 w-full max-w-7xl">
             <h1
-              data-aos="zoom-in"
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-semibold lg:pr-[500px] pr-0 leading-tight sm:leading-snug md:leading-[60px] lg:leading-[70px] xl:leading-[80px]"
             >
               Discover Your Dream Home in India
             </h1>
 
             <p
-              data-aos="zoom-in"
               className="text-white text-sm sm:text-base md:text-lg lg:text-xl lg:pr-[500px] pr-0 mt-3 sm:mt-4 leading-relaxed"
             >
               Whether you're looking to buy, rent, or invest, we offer a wide range of properties across India. From luxurious apartments to spacious villas, find the perfect home that suits your lifestyle.
@@ -204,7 +191,6 @@ const Hero = () => {
         } z-10 relative`}
       >
         <div
-          data-aos="zoom-in"
           id="form"
           className={`${
             darkMode ? "dark bg-gray-900/95 backdrop-blur-sm" : "light bg-white/95 backdrop-blur-sm"
