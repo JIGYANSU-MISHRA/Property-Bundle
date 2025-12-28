@@ -3,11 +3,11 @@ import { useDarkMode } from "../components/DarkModeContext";
 import area1 from "../assets/images/area1.jpg";
 import area2 from "../assets/images/area2.jpg";
 import area3 from "../assets/images/area3.jpg";
-import { FaMapMarkerAlt, FaHome, FaRupeeSign, FaArrowRight, FaTimes, FaStar, FaUsers, FaBuilding, FaChartLine } from "react-icons/fa";
+import { MapPin, Home, IndianRupee, ArrowRight, X, Star, Users, Building2, TrendingUp } from "lucide-react";
 
 const PopularAreas = () => {
   const [hoveredArea, setHoveredArea] = useState(null);
-  const [selectedArea, setSelectedArea] = useState(null);
+
   const [showModal, setShowModal] = useState(false);
   const [modalArea, setModalArea] = useState(null);
 
@@ -15,111 +15,86 @@ const PopularAreas = () => {
 
   const areas = [
     {
-      name: "Bandra West, Mumbai",
+      name: "Salt Lake, Kolkata",
       image: area1,
-      properties: 156,
-      avgPrice: "₹ 2.8 Cr",
-      description: "Premium residential area with sea views and excellent connectivity",
-      features: ["Sea View", "Premium Location", "Excellent Connectivity", "High ROI"],
-      propertyTypes: ["Apartments", "Penthouses", "Villas"],
-      avgRent: "₹ 1.2 Lakh/month",
-      details: {
-        population: "2.5 Lakh+",
-        avgAge: "32 years",
-        crimeRate: "Low",
-        schools: "45+",
-        hospitals: "12+",
-        shoppingMalls: "8+",
-        metroStations: "3",
-        parks: "15+",
-        restaurants: "200+",
-        annualAppreciation: "12%",
-        rentalYield: "4.5%",
-        investmentScore: "9.2/10",
-        lifestyleScore: "9.5/10",
-        connectivityScore: "9.8/10"
-      }
-    },
-    {
-      name: "Indiranagar, Bangalore",
-      image: area2,
-      properties: 89,
-      avgPrice: "₹ 1.9 Cr",
-      description: "Tech hub with modern apartments and vibrant lifestyle",
-      features: ["Tech Hub", "Modern Infrastructure", "Vibrant Lifestyle", "Good Investment"],
-      propertyTypes: ["Apartments", "Duplex", "Villas"],
-      avgRent: "₹ 85K/month",
-      details: {
-        population: "1.8 Lakh+",
-        avgAge: "28 years",
-        crimeRate: "Very Low",
-        schools: "32+",
-        hospitals: "8+",
-        shoppingMalls: "6+",
-        metroStations: "2",
-        parks: "12+",
-        restaurants: "150+",
-        annualAppreciation: "15%",
-        rentalYield: "5.2%",
-        investmentScore: "9.4/10",
-        lifestyleScore: "9.3/10",
-        connectivityScore: "9.6/10"
-      }
-    },
-    {
-      name: "Connaught Place, Delhi",
-      image: area3,
-      properties: 234,
+      properties: 124,
       avgPrice: "₹ 1.5 Cr",
-      description: "Historic area with mix of traditional and modern properties",
-      features: ["Historic Location", "Commercial Hub", "Good Connectivity", "Mixed Properties"],
-      propertyTypes: ["Apartments", "Commercial", "Heritage"],
-      avgRent: "₹ 95K/month",
+      description: "Planned satellite township with lush greenery and major IT hubs",
+      features: ["IT Hub", "Planned Infra", "Green City", "Metro Connectivity"],
+      propertyTypes: ["Apartments", "Independent Houses", "Office Spaces"],
+      avgRent: "₹ 45K/month",
       details: {
-        population: "3.2 Lakh+",
-        avgAge: "35 years",
-        crimeRate: "Medium",
-        schools: "55+",
-        hospitals: "15+",
-        shoppingMalls: "12+",
-        metroStations: "4",
-        parks: "20+",
-        restaurants: "300+",
+        population: "2.2 Lakh+",
+        avgAge: "38 years",
+        crimeRate: "Low",
+        schools: "25+",
+        hospitals: "10+",
+        shoppingMalls: "5+",
+        metroStations: "6",
+        parks: "40+",
+        restaurants: "120+",
+        annualAppreciation: "8%",
+        rentalYield: "3.5%",
+        investmentScore: "8.8/10",
+        lifestyleScore: "9.2/10",
+        connectivityScore: "9.5/10"
+      }
+    },
+    {
+      name: "Sea Beach Road, Puri",
+      image: area2,
+      properties: 65,
+      avgPrice: "₹ 1.1 Cr",
+      description: "Prime district offering breathtaking sea views and proximity to Jagannath Temple",
+      features: ["Sea View", "Tourism Hub", "Spiritual", "Vacation Homes"],
+      propertyTypes: ["Apartments", "Resorts", "Holiday Homes"],
+      avgRent: "₹ 35K/month",
+      details: {
+        population: "1.5 Lakh+",
+        avgAge: "40 years",
+        crimeRate: "Low",
+        schools: "15+",
+        hospitals: "5+",
+        shoppingMalls: "3+",
+        metroStations: "0",
+        parks: "8+",
+        restaurants: "80+",
         annualAppreciation: "10%",
-        rentalYield: "6.8%",
-        investmentScore: "8.9/10",
-        lifestyleScore: "9.1/10",
-        connectivityScore: "9.7/10"
+        rentalYield: "5.5%",
+        investmentScore: "8.5/10",
+        lifestyleScore: "9.0/10",
+        connectivityScore: "7.5/10"
+      }
+    },
+    {
+      name: "Patia, Bhubaneswar",
+      image: area3,
+      properties: 210,
+      avgPrice: "₹ 1.2 Cr",
+      description: "Rapidly developing education and IT corridor with modern infrastructure",
+      features: ["Education Hub", "IT Zone", "Smart City", "High Growth"],
+      propertyTypes: ["High-rise Apts", "Duplexes", "Commercial"],
+      avgRent: "₹ 28K/month",
+      details: {
+        population: "3.0 Lakh+",
+        avgAge: "29 years",
+        crimeRate: "Low",
+        schools: "35+",
+        hospitals: "18+",
+        shoppingMalls: "7+",
+        metroStations: "0",
+        parks: "25+",
+        restaurants: "150+",
+        annualAppreciation: "14%",
+        rentalYield: "4.8%",
+        investmentScore: "9.3/10",
+        lifestyleScore: "8.9/10",
+        connectivityScore: "9.0/10"
       }
     }
   ];
 
-  const statistics = [
-    {
-      number: "50+",
-      label: "ACTIVE LISTINGS",
-      description: "Properties available in Bhubaneswar",
-      icon: FaHome
-    },
-    {
-      number: "25+",
-      label: "SATISFIED CLIENTS",
-      description: "Happy customers who found their homes",
-      icon: FaMapMarkerAlt
-    },
-    {
-      number: "35+",
-      label: "TOTAL TRANSACTIONS",
-      description: "Successful property deals completed",
-      icon: FaRupeeSign
-    },
-    {
-      number: "₹5Cr+",
-      label: "PROPERTY VALUE",
-      description: "Total value of properties sold",
-      icon: FaHome
-    }
-  ];
+
 
   const handleExploreArea = (area) => {
     setModalArea(area);
@@ -137,7 +112,7 @@ const PopularAreas = () => {
       : parseFloat(String(scoreOutOfTen).split('/')[0]);
     const stars = Math.round(Math.max(0, Math.min(5, (numeric / 10) * 5)));
     return Array.from({ length: 5 }, (_, i) => (
-      <FaStar 
+      <Star 
         key={i} 
         className={`${i < stars ? "text-yellow-500" : "text-gray-300"} w-3 h-3 sm:w-4 sm:h-4`}
       />
@@ -179,7 +154,7 @@ const PopularAreas = () => {
                 className="relative group cursor-pointer"
                 onMouseEnter={() => setHoveredArea(index)}
                 onMouseLeave={() => setHoveredArea(null)}
-                onClick={() => setSelectedArea(selectedArea === index ? null : index)}
+
               >
                                  <div className="h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 bg-cover bg-center rounded-xl shadow-lg transform transition duration-300 hover:scale-105 relative overflow-hidden"
                    style={{ backgroundImage: `url(${area.image})` }}
@@ -194,11 +169,11 @@ const PopularAreas = () => {
                     
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0 mb-2 sm:mb-3">
                       <div className="flex items-center gap-1.5 sm:gap-2">
-                        <FaHome className="text-green-400 text-sm sm:text-base flex-shrink-0" />
+                        <Home className="text-green-400 text-sm sm:text-base flex-shrink-0" />
                         <span className="text-xs sm:text-sm">{area.properties} properties</span>
                       </div>
                       <div className="flex items-center gap-1.5 sm:gap-2">
-                        <FaRupeeSign className="text-green-400 text-sm sm:text-base flex-shrink-0" />
+                        <IndianRupee className="text-green-400 text-sm sm:text-base flex-shrink-0" />
                         <span className="text-xs sm:text-sm">{area.avgPrice}</span>
                       </div>
                     </div>
@@ -224,7 +199,7 @@ const PopularAreas = () => {
                             className="bg-green-600 text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2 text-sm sm:text-base"
                           >
                             Explore Area
-                            <FaArrowRight className="text-xs sm:text-sm" />
+                            <ArrowRight className="text-xs sm:text-sm" />
                           </button>
                         </div>
                       </div>
@@ -232,67 +207,12 @@ const PopularAreas = () => {
                   </div>
                 </div>
 
-                {/* Expanded Details */}
-                {selectedArea === index && (
-                  <div className="mt-3 sm:mt-4 bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg">
-                    <h4 className="font-semibold text-sm sm:text-base text-green-600 dark:text-green-400 mb-2 sm:mb-3">Area Details</h4>
-                    
-                    <div className="space-y-2 sm:space-y-3">
-                      <div>
-                        <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Property Types:</span>
-                        <div className="flex flex-wrap gap-1 mt-1">
-                          {area.propertyTypes.map((type, idx) => (
-                            <span key={idx} className="px-2 py-0.5 sm:py-1 bg-gray-100 dark:bg-gray-700 text-xs rounded">
-                              {type}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Average Rent:</span>
-                        <p className="font-medium text-sm sm:text-base">{area.avgRent}</p>
-                      </div>
-                      
-                      <div>
-                        <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Key Features:</span>
-                        <div className="flex flex-wrap gap-1 mt-1">
-                          {area.features.map((feature, idx) => (
-                            <span key={idx} className="px-2 py-0.5 sm:py-1 bg-green-100 dark:bg-green-900 text-xs rounded">
-                              {feature}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+
               </div>
             ))}
           </div>
 
-          {/* Enhanced Statistics Section */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12 lg:mb-16">
-            {statistics.map((stat, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center p-4 sm:p-5 lg:p-6 bg-white dark:bg-gray-800 shadow-lg rounded-xl hover:shadow-xl transition-shadow duration-300 group"
-              >
-                <div className="p-3 sm:p-4 rounded-full bg-green-100 dark:bg-green-900 mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="text-green-600 dark:text-green-400 text-xl sm:text-2xl" />
-                </div>
-                <h1 className="text-3xl sm:text-4xl font-extrabold text-green-600 dark:text-green-400 mb-1 sm:mb-2">
-                  {stat.number}
-                </h1>
-                <p className="text-sm sm:text-base lg:text-lg font-semibold text-center mb-1 sm:mb-2">
-                  {stat.label}
-                </p>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 text-center">
-                  {stat.description}
-                </p>
-              </div>
-            ))}
-          </div>
+
 
           {/* Market Insights */}
           <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg">
@@ -334,7 +254,7 @@ const PopularAreas = () => {
                     className="bg-white dark:bg-gray-800 p-1.5 sm:p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                     aria-label="Close modal"
                   >
-                    <FaTimes className="text-gray-600 dark:text-gray-300 text-sm sm:text-base" />
+                    <X className="text-gray-600 dark:text-gray-300 text-sm sm:text-base" />
                   </button>
                 </div>
                 <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4 text-white">
@@ -366,7 +286,7 @@ const PopularAreas = () => {
               <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 <div className="bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
-                    <FaChartLine className="text-green-600 text-sm sm:text-base flex-shrink-0" />
+                    <TrendingUp className="text-green-600 text-sm sm:text-base flex-shrink-0" />
                     <h3 className="font-semibold text-sm sm:text-base">Investment Score</h3>
                   </div>
                   <div className="flex items-center gap-2 mb-2 flex-wrap">
@@ -382,7 +302,7 @@ const PopularAreas = () => {
 
                 <div className="bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
-                    <FaUsers className="text-green-600 text-sm sm:text-base flex-shrink-0" />
+                    <Users className="text-green-600 text-sm sm:text-base flex-shrink-0" />
                     <h3 className="font-semibold text-sm sm:text-base">Lifestyle Score</h3>
                   </div>
                   <div className="flex items-center gap-2 mb-2 flex-wrap">
@@ -398,7 +318,7 @@ const PopularAreas = () => {
 
                 <div className="bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 rounded-lg sm:col-span-2 md:col-span-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <FaBuilding className="text-green-600 text-sm sm:text-base flex-shrink-0" />
+                    <Building2 className="text-green-600 text-sm sm:text-base flex-shrink-0" />
                     <h3 className="font-semibold text-sm sm:text-base">Connectivity Score</h3>
                   </div>
                   <div className="flex items-center gap-2 mb-2 flex-wrap">

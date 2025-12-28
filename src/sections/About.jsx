@@ -1,67 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDarkMode } from "../components/DarkModeContext";
 import aboutimg from "../assets/images/about.jpg";
-import {
-  FaUsers,
-  FaHome,
-  FaAward,
-  FaHandshake,
-  FaCheckCircle,
-  FaArrowRight,
-} from "react-icons/fa";
+import { CheckCircle, ArrowRight, Users, Home, Award, Handshake } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState("mission");
-
   const { darkMode } = useDarkMode();
+  const navigate = useNavigate();
 
   const companyStats = [
     {
-      icon: FaUsers,
+      icon: Users,
       number: "25+",
       label: "Happy Clients",
       description: "Satisfied customers in Bhubaneswar",
     },
     {
-      icon: FaHome,
+      icon: Home,
       number: "35+",
       label: "Properties Sold",
       description: "Successfully closed deals",
     },
     {
-      icon: FaAward,
+      icon: Award,
       number: "3+",
       label: "Years Experience",
       description: "Industry expertise and trust",
     },
     {
-      icon: FaHandshake,
+      icon: Handshake,
       number: "95%",
       label: "Success Rate",
       description: "Customer satisfaction rate",
     },
   ];
 
-  const tabs = [
-    {
-      id: "mission",
-      title: "Our Mission",
-      content:
-        "To provide exceptional real estate services that help individuals and families find their perfect homes while ensuring transparency, trust, and value in every transaction.",
-    },
-    {
-      id: "vision",
-      title: "Our Vision",
-      content:
-        "To become the most trusted and preferred real estate partner in India, known for our integrity, innovation, and commitment to customer satisfaction.",
-    },
-    {
-      id: "values",
-      title: "Our Values",
-      content:
-        "Integrity, transparency, customer-first approach, innovation, and excellence in everything we do.",
-    },
-  ];
+
 
   const features = [
     "Expert property evaluation and pricing",
@@ -118,30 +92,7 @@ const About = () => {
           the way with transparency, innovation, and expertise.
         </p>
 
-        {/* Tabs */}
-        <div className="w-full">
-          <div className="flex gap-2 mb-4 overflow-x-auto pb-2">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 rounded-lg text-sm md:text-base whitespace-nowrap transition-colors ${
-                  activeTab === tab.id
-                    ? "bg-green-600 text-white"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-green-100 dark:hover:bg-gray-700"
-                }`}
-              >
-                {tab.title}
-              </button>
-            ))}
-          </div>
 
-          <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-            <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed">
-              {tabs.find((tab) => tab.id === activeTab)?.content}
-            </p>
-          </div>
-        </div>
 
         {/* Features */}
         <div className="w-full">
@@ -151,7 +102,7 @@ const About = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {features.map((feature, index) => (
               <div key={index} className="flex items-center gap-2">
-                <FaCheckCircle className="text-green-600 text-sm" />
+                <CheckCircle className="text-green-600 text-sm" />
                 <span className="text-sm md:text-base text-gray-600 dark:text-gray-300">
                   {feature}
                 </span>
@@ -162,10 +113,11 @@ const About = () => {
 
         {/* Button */}
         <button
+          onClick={() => navigate("/about-us")}
           className="bg-lime-600 dark:bg-lime-700 hover:bg-lime-700 dark:hover:bg-lime-500 px-6 py-3 text-white font-semibold rounded-lg transition-all transform hover:scale-105 flex items-center gap-2 shadow-md"
         >
-          LEARN MORE
-          <FaArrowRight className="text-sm" />
+          View More
+          <ArrowRight className="text-sm" />
         </button>
       </div>
 

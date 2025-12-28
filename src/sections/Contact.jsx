@@ -1,16 +1,6 @@
 import React, { useState } from "react";
 import { useDarkMode } from "../components/DarkModeContext";
-import { 
-  FaPhone, 
-  FaEnvelope, 
-  FaMapMarkerAlt, 
-  FaClock, 
-  FaWhatsapp,
-  FaFacebook,
-  FaInstagram,
-  FaTwitter,
-  FaLinkedin
-} from "react-icons/fa";
+import { Phone, Mail, MapPin, Clock, MessageCircle, Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -93,7 +83,7 @@ const Contact = () => {
 
   const contactMethods = [
     {
-      icon: FaPhone,
+      icon: Phone,
       title: "Call Us",
       value: "+91 99999 99999",
       description: "Available 24/7 for urgent inquiries",
@@ -101,7 +91,7 @@ const Contact = () => {
       color: "text-blue-600"
     },
     {
-      icon: FaWhatsapp,
+      icon: MessageCircle,
       title: "WhatsApp",
       value: "+91 88888 88888",
       description: "Quick responses via WhatsApp",
@@ -109,7 +99,7 @@ const Contact = () => {
       color: "text-green-600"
     },
     {
-      icon: FaEnvelope,
+      icon: Mail,
       title: "Email Us",
       value: "info@propertybundle.com",
       description: "Get detailed information via email",
@@ -119,10 +109,10 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: FaFacebook, label: "Facebook", color: "text-blue-600" },
-    { icon: FaInstagram, label: "Instagram", color: "text-pink-600" },
-    { icon: FaTwitter, label: "Twitter", color: "text-blue-400" },
-    { icon: FaLinkedin, label: "LinkedIn", color: "text-blue-700" }
+    { icon: Facebook, label: "Facebook", color: "text-blue-600" },
+    { icon: Instagram, label: "Instagram", color: "text-pink-600" },
+    { icon: Twitter, label: "Twitter", color: "text-blue-400" },
+    { icon: Linkedin, label: "LinkedIn", color: "text-blue-700" }
   ];
 
   return (
@@ -148,10 +138,11 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 sm:gap-8 lg:gap-10">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 sm:gap-8 lg:gap-10 items-start">
           {/* Form Section */}
-          <div
-            className="bg-white dark:bg-black p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col justify-center items-start gap-3 sm:gap-4 rounded-xl w-full shadow-lg"
+          <div className="flex flex-col gap-6">
+            <div
+            className="bg-white dark:bg-black p-5 flex flex-col justify-center items-start gap-3 sm:gap-4 rounded-xl w-full shadow-lg h-fit"
           >
             <h1 className="text-xl sm:text-2xl text-black font-semibold dark:text-white mb-3 sm:mb-4">Send us a message</h1>
             
@@ -239,8 +230,31 @@ const Contact = () => {
             </form>
           </div>
 
+          <div className="w-full bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md mt-6">
+            <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <Clock className="text-green-600 text-lg sm:text-xl flex-shrink-0" />
+              <h3 className="font-semibold text-sm sm:text-base text-black dark:text-white">Office Hours</h3>
+            </div>
+            <div className="space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+              <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                <span className="font-medium sm:font-normal">Monday - Friday</span>
+                <span>9:00 AM - 7:00 PM</span>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                <span className="font-medium sm:font-normal">Saturday</span>
+                <span>10:00 AM - 5:00 PM</span>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
+                <span className="font-medium sm:font-normal">Sunday</span>
+                <span>By Appointment</span>
+              </div>
+            </div>
+          </div>
+
+          </div>
+
           {/* Contact Info Section */}
-          <div className="flex flex-col justify-center items-start gap-6 sm:gap-8 lg:p-12 xl:p-20 p-4 sm:p-6">
+          <div className="flex flex-col items-start gap-6 sm:gap-8 p-5">
             <h1 className="text-green-500 dark:text-white uppercase tracking-widest text-xs sm:text-sm md:text-base">
               Reach Us
             </h1>
@@ -275,27 +289,7 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Office Hours */}
-            <div className="w-full bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
-              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                <FaClock className="text-green-600 text-lg sm:text-xl flex-shrink-0" />
-                <h3 className="font-semibold text-sm sm:text-base text-black dark:text-white">Office Hours</h3>
-              </div>
-              <div className="space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                  <span className="font-medium sm:font-normal">Monday - Friday</span>
-                  <span>9:00 AM - 7:00 PM</span>
-                </div>
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                  <span className="font-medium sm:font-normal">Saturday</span>
-                  <span>10:00 AM - 5:00 PM</span>
-                </div>
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                  <span className="font-medium sm:font-normal">Sunday</span>
-                  <span>By Appointment</span>
-                </div>
-              </div>
-            </div>
+
 
             {/* Social Links */}
             <div className="w-full">
@@ -304,7 +298,7 @@ const Contact = () => {
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
-                    href="#"
+                    href=""
                     aria-label={social.label}
                     className={`p-2.5 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all transform hover:scale-110 ${social.color}`}
                   >

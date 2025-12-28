@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDarkMode } from "../components/DarkModeContext";
-import heroimg from "../assets/images/hero1.webp";
-import { FaSearch, FaMapMarkerAlt, FaHome, FaRupeeSign, FaTimes, FaFilter } from "react-icons/fa";
+import heroimg1 from "../assets/images/hero1.webp";
+import heroimg2 from "../assets/images/hero2.webp";
+import heroVideo from "../assets/videos/Hero Video1.mp4";
+import { Search, MapPin, Home, IndianRupee, X, Filter, ChevronLeft, ChevronRight } from "lucide-react";
 
 const Hero = () => {
   const [searchData, setSearchData] = useState({
@@ -13,6 +15,22 @@ const Hero = () => {
     bedrooms: "",
     bathrooms: ""
   });
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = [heroimg1, heroimg2];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 3000);
+    return () => clearInterval(timer);
+  }, []);
 
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
@@ -146,11 +164,35 @@ const Hero = () => {
       <div className={`${darkMode ? "dark bg-black" : "light bg-white"}`}>
         <section
           id="hero"
-          className={`w-full min-h-[500px] sm:min-h-[550px] md:min-h-[600px] lg:h-[660px] mt-5 m-auto bg-cover bg-center flex justify-center flex-col items-start px-4 sm:px-6 md:px-10 lg:px-20 xl:px-28 gap-4 sm:gap-6 lg:gap-7 z-10 relative py-12 sm:py-16 lg:py-0`}
-          style={{ backgroundImage: `url(${heroimg})` }}
+          className={`w-full min-h-[500px] sm:min-h-[550px] md:min-h-[600px] lg:h-[660px] mt-5 m-auto flex justify-center flex-col items-start px-4 sm:px-6 md:px-10 lg:px-20 xl:px-28 gap-4 sm:gap-6 lg:gap-7 z-10 relative py-12 sm:py-16 lg:py-0 overflow-hidden text-left`}
         >
+          {/* Carousel Images */}
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
+              style={{ backgroundImage: `url(${slide})` }}
+            ></div>
+          ))}
+
           {/* Overlay for better text readability */}
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          <div className="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
+
+          {/* Navigation Buttons */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full z-30 transition-all hidden sm:block"
+          >
+            <ChevronLeft size={30} />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full z-30 transition-all hidden sm:block"
+          >
+            <ChevronRight size={30} />
+          </button>
           
           <div className="relative z-10 w-full max-w-7xl">
             <h1
@@ -200,7 +242,7 @@ const Hero = () => {
           {searchError && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-t-xl">
               <div className="flex items-center gap-2">
-                <FaTimes className="text-red-500" />
+                <X className="text-red-500" />
                 <span>{searchError}</span>
               </div>
             </div>
@@ -211,7 +253,7 @@ const Hero = () => {
             {/* Location Input */}
             <div className="w-full">
               <h1 className="text-black font-semibold dark:text-white flex items-center gap-2 text-sm sm:text-base">
-                <FaMapMarkerAlt className="text-green-600 text-sm sm:text-base" />
+                <MapPin className="text-green-600 w-4 h-4 sm:w-5 sm:h-5" />
                 LOCATION
               </h1>
               <input
@@ -226,7 +268,7 @@ const Hero = () => {
             {/* Type Dropdown */}
             <div className="w-full">
               <h1 className="text-black font-semibold dark:text-white flex items-center gap-2 text-sm sm:text-base">
-                <FaHome className="text-green-600 text-sm sm:text-base" />
+                <Home className="text-green-600 w-4 h-4 sm:w-5 sm:h-5" />
                 TYPE
               </h1>
               <select
@@ -274,7 +316,7 @@ const Hero = () => {
                   </>
                 ) : (
                   <>
-                    <FaSearch />
+                    <Search />
                     SEARCH PROPERTIES
                   </>
                 )}
@@ -288,7 +330,7 @@ const Hero = () => {
               onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
               className="text-green-600 dark:text-green-400 font-semibold hover:text-green-700 transition-colors flex items-center gap-2"
             >
-              <FaFilter />
+              <Filter />
               {showAdvancedSearch ? "Hide" : "Show"} Advanced Search
             </button>
           </div>
@@ -300,7 +342,7 @@ const Hero = () => {
                 {/* Price Range */}
                 <div className="w-full">
                   <h1 className="text-black font-semibold dark:text-white flex items-center gap-2 text-sm sm:text-base">
-                    <FaRupeeSign className="text-green-600 text-sm sm:text-base" />
+                    <IndianRupee className="text-green-600 w-4 h-4 sm:w-5 sm:h-5" />
                     PRICE RANGE
                   </h1>
                   <div className="flex gap-2 mt-2">
@@ -419,6 +461,35 @@ const Hero = () => {
           </div>
         </div>
       )}
+
+      {/* Video Section */}
+      <section className="w-full py-20 bg-white dark:bg-black">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center text-center gap-4 mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-semibold leading-snug text-black dark:text-white max-w-4xl">
+              Connecting People with Perfect Properties
+            </h2>
+            <p className="text-sm sm:text-base md:text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-2xl leading-relaxed">
+              Property Bundle is a leading real estate platform dedicated to connecting buyers, sellers, and renters with their perfect property.
+            </p>
+          </div>
+          
+          <div className="w-full max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl relative aspect-video">
+            <video
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src={heroVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            {/* Overlay gradient for better integration */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };

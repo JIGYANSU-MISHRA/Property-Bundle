@@ -1,36 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDarkMode } from "../components/DarkModeContext";
 import { property } from "../components/export";
-import {
-  FaBath,
-  FaShareAlt,
-  FaBed,
-  FaUserCircle,
-  FaPlus,
-  FaHeart,
-  FaMapMarkerAlt,
-  FaVideo,
-  FaCamera,
-  FaStar,
-  FaEye,
-  FaFilter,
-  FaTimes,
-  FaUndo,
-  FaPhone,
-  FaEnvelope,
-  FaCalendar,
-  FaParking,
-  FaSwimmingPool,
-  FaWifi,
-  FaShieldAlt,
-  FaTree,
-  FaBuilding,
-} from "react-icons/fa";
-import { MdSpaceDashboard } from "react-icons/md";
+import { Bath, Share2, BedDouble, UserCircle, Plus, Heart, MapPin, Video, Camera, Star, Eye, Filter, X, RotateCcw, Phone, Mail, Calendar, SquareParking, Waves, Wifi, Shield, Trees, Building2, LayoutDashboard } from "lucide-react";
 
 const Properties = () => {
   const [filteredProperties, setFilteredProperties] = useState(property);
+  const [visibleCount, setVisibleCount] = useState(4);
   const [filters, setFilters] = useState({
+    location: "",
     type: "",
     priceRange: "",
     bedrooms: "",
@@ -64,6 +41,7 @@ const Properties = () => {
 
   const clearAllFilters = () => {
     setFilters({
+      location: "",
       type: "",
       priceRange: "",
       bedrooms: "",
@@ -73,6 +51,7 @@ const Properties = () => {
     });
     setSortBy("newest");
     setActiveFilters([]);
+    setVisibleCount(4);
   };
 
   const removeFilter = (filterType, value) => {
@@ -86,6 +65,12 @@ const Properties = () => {
   const applyFilters = () => {
     let filtered = property;
     const newActiveFilters = [];
+
+    // Location filter
+    if (filters.location) {
+      filtered = filtered.filter(prop => prop.address.toLowerCase().includes(filters.location.toLowerCase()));
+      newActiveFilters.push({ type: 'location', value: filters.location, label: filters.location });
+    }
 
     // Type filter
     if (filters.type) {
@@ -149,7 +134,7 @@ const Properties = () => {
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, i) => (
-      <FaStar 
+      <Star 
         key={i} 
         className={`${i < Math.floor(rating) ? "text-yellow-500" : "text-gray-300"} w-3 h-3 sm:w-3.5 sm:h-3.5`}
       />
@@ -203,9 +188,20 @@ const Properties = () => {
                 onClick={() => setShowFilters(!showFilters)}
                 className="flex items-center justify-center gap-2 bg-green-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base"
               >
-                <FaFilter className="text-xs sm:text-sm" />
+                <Filter className="text-xs sm:text-sm" />
                 {showFilters ? 'Hide' : 'Show'} Filters
               </button>
+              
+              <select
+                value={filters.location}
+                onChange={(e) => handleFilterChange('location', e.target.value)}
+                className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 sm:px-4 py-2 focus:ring-2 focus:ring-green-500 outline-none text-sm sm:text-base"
+              >
+                <option value="">All Locations</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Bhubaneswar">Bhubaneswar</option>
+                <option value="Puri">Puri</option>
+              </select>
               
               <select
                 value={sortBy}
@@ -224,7 +220,7 @@ const Properties = () => {
                   onClick={clearAllFilters}
                   className="flex items-center justify-center gap-2 bg-gray-500 text-white px-3 py-2 rounded-lg hover:bg-gray-600 transition-colors text-xs sm:text-sm"
                 >
-                  <FaUndo className="text-xs sm:text-sm" />
+                  <RotateCcw className="text-xs sm:text-sm" />
                   Clear All
                 </button>
               )}
@@ -246,7 +242,7 @@ const Properties = () => {
                     className="hover:bg-green-200 dark:hover:bg-green-800 rounded-full p-0.5 sm:p-1 flex-shrink-0"
                     aria-label="Remove filter"
                   >
-                    <FaTimes size={10} className="sm:w-3 sm:h-3" />
+                    <X size={10} className="sm:w-3 sm:h-3" />
                   </button>
                 </div>
               ))}
@@ -257,6 +253,8 @@ const Properties = () => {
           {showFilters && (
             <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+
+
                 <select
                   value={filters.type}
                   onChange={(e) => handleFilterChange('type', e.target.value)}
@@ -311,7 +309,7 @@ const Properties = () => {
 
         {/* Properties Grid */}
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 sm:gap-6 lg:gap-8">
-          {filteredProperties.map((item, index) => (
+          {filteredProperties.slice(0, visibleCount).map((item, index) => (
             <div
               key={index}
               className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden"
@@ -338,12 +336,12 @@ const Properties = () => {
 
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2 sm:gap-0">
                   <div className="flex items-center gap-1.5 sm:gap-2 text-white">
-                    <FaMapMarkerAlt className="text-sm sm:text-base lg:text-lg flex-shrink-0" />
+                    <MapPin className="text-sm sm:text-base lg:text-lg flex-shrink-0" />
                     <span className="text-xs sm:text-sm truncate">{item.address}</span>
                   </div>
                   <div className="flex items-center gap-3 sm:gap-4 text-white">
-                    <FaVideo className="text-sm sm:text-base lg:text-lg cursor-pointer hover:text-green-400 transition-colors flex-shrink-0" />
-                    <FaCamera className="text-sm sm:text-base lg:text-lg cursor-pointer hover:text-green-400 transition-colors flex-shrink-0" />
+                    <Video className="text-sm sm:text-base lg:text-lg cursor-pointer hover:text-green-400 transition-colors flex-shrink-0" />
+                    <Camera className="text-sm sm:text-base lg:text-lg cursor-pointer hover:text-green-400 transition-colors flex-shrink-0" />
                   </div>
                 </div>
               </div>
@@ -364,15 +362,15 @@ const Properties = () => {
 
                 <div className="flex flex-wrap gap-3 sm:gap-4 mt-2 sm:mt-3">
                   <div className="flex items-center gap-1.5 sm:gap-2">
-                    <FaBath className="text-green-500 text-sm sm:text-base lg:text-lg flex-shrink-0" />
+                    <Bath className="text-green-500 text-sm sm:text-base lg:text-lg flex-shrink-0" />
                     <span className="text-xs sm:text-sm">{item.bath} Bath</span>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2">
-                    <FaBed className="text-green-500 text-sm sm:text-base lg:text-lg flex-shrink-0" />
+                    <BedDouble className="text-green-500 text-sm sm:text-base lg:text-lg flex-shrink-0" />
                     <span className="text-xs sm:text-sm">{item.bed} Beds</span>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2">
-                    <MdSpaceDashboard className="text-green-500 text-sm sm:text-base lg:text-lg flex-shrink-0" />
+                    <LayoutDashboard className="text-green-500 text-sm sm:text-base lg:text-lg flex-shrink-0" />
                     <span className="text-xs sm:text-sm">{item.area}</span>
                   </div>
                 </div>
@@ -395,11 +393,11 @@ const Properties = () => {
 
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0">
                   <div className="flex items-center gap-1.5 sm:gap-2">
-                    <FaUserCircle className="text-green-500 text-sm sm:text-base lg:text-lg flex-shrink-0" />
+                    <UserCircle className="text-green-500 text-sm sm:text-base lg:text-lg flex-shrink-0" />
                     <span className="text-xs sm:text-sm truncate">{item.owner}</span>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
-                    <FaEye className="text-green-500 text-sm sm:text-base flex-shrink-0" />
+                    <Eye className="text-green-500 text-sm sm:text-base flex-shrink-0" />
                     <span>{item.views.toLocaleString()}</span>
                   </div>
                 </div>
@@ -413,29 +411,35 @@ const Properties = () => {
                   </button>
                   <div className="flex gap-2 justify-center sm:justify-end">
                     <div className="p-1.5 sm:p-2 border-2 border-gray-200 dark:border-gray-700 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer transition hover:scale-110">
-                      <FaShareAlt className="text-green-500 text-sm sm:text-base" />
+                      <Share2 className="text-green-500 text-sm sm:text-base" />
                     </div>
                     <div className="p-1.5 sm:p-2 border-2 border-gray-200 dark:border-gray-700 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer transition hover:scale-110">
-                      <FaHeart className="text-green-500 text-sm sm:text-base" />
+                      <Heart className="text-green-500 text-sm sm:text-base" />
                     </div>
                     <div className="p-1.5 sm:p-2 border-2 border-gray-200 dark:border-gray-700 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer transition hover:scale-110">
-                      <FaPlus className="text-green-500 text-sm sm:text-base" />
+                      <Plus className="text-green-500 text-sm sm:text-base" />
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
 
-        {/* Load More Button */}
-        {filteredProperties.length > 0 && (
-          <div className="text-center mt-8 sm:mt-10">
-            <button className="bg-green-600 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold text-sm sm:text-base">
-              Load More Properties
-            </button>
-          </div>
-        )}
+        </div>
+          ))} 
+          
+          {filteredProperties.length > visibleCount && (
+            <div className="flex items-center justify-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border-2 border-dashed border-gray-300 dark:border-gray-700 h-full min-h-[400px]">
+              <button 
+                onClick={() => setVisibleCount(prev => prev + 4)}
+                className="flex flex-col items-center gap-3 group"
+              >
+                <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Plus className="text-green-600 dark:text-green-400 text-2xl" />
+                </div>
+                <span className="text-green-600 dark:text-green-400 font-semibold text-lg">View More</span>
+              </button>
+            </div>
+          )}
+        </div>
 
         {/* No Results Message */}
         {filteredProperties.length === 0 && (
@@ -477,7 +481,7 @@ const Properties = () => {
                   className="absolute top-2 sm:top-3 md:top-4 right-2 sm:right-3 md:right-4 bg-white dark:bg-gray-800 p-1.5 sm:p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors z-10"
                   aria-label="Close modal"
                 >
-                  <FaTimes className="text-gray-600 dark:text-gray-300 text-base sm:text-lg md:text-xl" />
+                  <X className="text-gray-600 dark:text-gray-300 text-base sm:text-lg md:text-xl" />
                 </button>
 
                 {/* Property Badges */}
@@ -500,7 +504,7 @@ const Properties = () => {
                   <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 line-clamp-2">{selectedProperty.name}</h2>
                   <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2 sm:gap-3 md:gap-4">
                     <div className="flex items-center gap-1.5 sm:gap-2">
-                      <FaMapMarkerAlt className="text-green-400 text-sm sm:text-base flex-shrink-0" />
+                      <MapPin className="text-green-400 text-sm sm:text-base flex-shrink-0" />
                       <span className="text-xs sm:text-sm md:text-base truncate">{selectedProperty.address}</span>
                     </div>
                     <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-green-400">
@@ -516,17 +520,17 @@ const Properties = () => {
               {/* Quick Stats */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6 mb-4 sm:mb-6 md:mb-8 pb-4 sm:pb-6 md:pb-8 border-b border-gray-200 dark:border-gray-700">
                 <div className="text-center p-2 sm:p-3 md:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                  <FaBed className="text-green-600 dark:text-green-400 text-lg sm:text-xl md:text-2xl mx-auto mb-1 sm:mb-2" />
+                  <BedDouble className="text-green-600 dark:text-green-400 text-lg sm:text-xl md:text-2xl mx-auto mb-1 sm:mb-2" />
                   <div className="text-base sm:text-lg md:text-xl font-bold text-gray-800 dark:text-white">{selectedProperty.bed}</div>
                   <div className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-300">Bedrooms</div>
                 </div>
                 <div className="text-center p-2 sm:p-3 md:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                  <FaBath className="text-green-600 dark:text-green-400 text-lg sm:text-xl md:text-2xl mx-auto mb-1 sm:mb-2" />
+                  <Bath className="text-green-600 dark:text-green-400 text-lg sm:text-xl md:text-2xl mx-auto mb-1 sm:mb-2" />
                   <div className="text-base sm:text-lg md:text-xl font-bold text-gray-800 dark:text-white">{selectedProperty.bath}</div>
                   <div className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-300">Bathrooms</div>
                 </div>
                 <div className="text-center p-2 sm:p-3 md:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                  <MdSpaceDashboard className="text-green-600 dark:text-green-400 text-lg sm:text-xl md:text-2xl mx-auto mb-1 sm:mb-2" />
+                  <LayoutDashboard className="text-green-600 dark:text-green-400 text-lg sm:text-xl md:text-2xl mx-auto mb-1 sm:mb-2" />
                   <div className="text-base sm:text-lg md:text-xl font-bold text-gray-800 dark:text-white break-words">{selectedProperty.area}</div>
                   <div className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-300">Area</div>
                 </div>
@@ -565,26 +569,26 @@ const Properties = () => {
                 {/* Owner Information */}
                 <div className="bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl">
                   <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4 flex items-center gap-2">
-                    <FaUserCircle className="text-green-600 dark:text-green-400 text-base sm:text-lg md:text-xl flex-shrink-0" />
+                    <UserCircle className="text-green-600 dark:text-green-400 text-base sm:text-lg md:text-xl flex-shrink-0" />
                     <span>Owner Information</span>
                   </h3>
                   <div className="space-y-2 sm:space-y-3">
                     <div className="flex items-start sm:items-center gap-2 sm:gap-3">
-                      <FaUserCircle className="text-green-600 dark:text-green-400 text-lg sm:text-xl flex-shrink-0 mt-0.5 sm:mt-0" />
+                      <UserCircle className="text-green-600 dark:text-green-400 text-lg sm:text-xl flex-shrink-0 mt-0.5 sm:mt-0" />
                       <div className="min-w-0 flex-1">
                         <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Owner</div>
                         <div className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 dark:text-white break-words">{selectedProperty.owner}</div>
                       </div>
                     </div>
                     <div className="flex items-start sm:items-center gap-2 sm:gap-3">
-                      <FaPhone className="text-green-600 dark:text-green-400 text-lg sm:text-xl flex-shrink-0 mt-0.5 sm:mt-0" />
+                      <Phone className="text-green-600 dark:text-green-400 text-lg sm:text-xl flex-shrink-0 mt-0.5 sm:mt-0" />
                       <div className="min-w-0 flex-1">
                         <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Phone</div>
                         <div className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 dark:text-white break-words">+91 99999 99999</div>
                       </div>
                     </div>
                     <div className="flex items-start sm:items-center gap-2 sm:gap-3">
-                      <FaEnvelope className="text-green-600 dark:text-green-400 text-lg sm:text-xl flex-shrink-0 mt-0.5 sm:mt-0" />
+                      <Mail className="text-green-600 dark:text-green-400 text-lg sm:text-xl flex-shrink-0 mt-0.5 sm:mt-0" />
                       <div className="min-w-0 flex-1">
                         <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Email</div>
                         <div className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 dark:text-white break-all">{selectedProperty.owner.toLowerCase().replace(/\s+/g, '')}@propertybundle.com</div>
@@ -596,7 +600,7 @@ const Properties = () => {
                 {/* Property Statistics */}
                 <div className="bg-gray-50 dark:bg-gray-700 p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl">
                   <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4 flex items-center gap-2">
-                    <FaBuilding className="text-green-600 dark:text-green-400 text-base sm:text-lg md:text-xl flex-shrink-0" />
+                    <Building2 className="text-green-600 dark:text-green-400 text-base sm:text-lg md:text-xl flex-shrink-0" />
                     <span>Property Statistics</span>
                   </h3>
                   <div className="space-y-2 sm:space-y-3">
@@ -637,7 +641,7 @@ const Properties = () => {
                   <span>Contact Owner</span>
                 </button>
                 <button className="flex-1 bg-blue-600 text-white py-2.5 sm:py-3 px-4 sm:px-5 md:px-6 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-xs sm:text-sm md:text-base flex items-center justify-center gap-1.5 sm:gap-2">
-                  <FaCalendar className="text-xs sm:text-sm md:text-base" />
+                  <Calendar className="text-xs sm:text-sm md:text-base" />
                   <span>Schedule Visit</span>
                 </button>
                 <button className="flex-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2.5 sm:py-3 px-4 sm:px-5 md:px-6 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-semibold text-xs sm:text-sm md:text-base flex items-center justify-center gap-1.5 sm:gap-2">

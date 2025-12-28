@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { client } from "../components/export";
 import { useDarkMode } from "../components/DarkModeContext";
-import { FaStar, FaMapMarkerAlt, FaHome, FaQuoteLeft } from "react-icons/fa";
+import { Star, MapPin, Home, Quote } from "lucide-react";
 
 const Client = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -15,7 +15,7 @@ const Client = () => {
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, i) => (
-      <FaStar 
+      <Star 
         key={i} 
         className={i < rating ? "text-yellow-500" : "text-gray-300"} 
         size={14} 
@@ -95,7 +95,7 @@ const Client = () => {
             >
               {/* Quote Icon */}
               <div className="absolute top-3 right-3 sm:top-4 sm:right-4 text-green-600 opacity-20">
-                <FaQuoteLeft size={18} className="sm:size-6" />
+                <Quote size={18} className="sm:size-6" />
               </div>
 
               {/* Client Info */}
@@ -108,11 +108,11 @@ const Client = () => {
                 <div className="flex flex-col flex-1 min-w-0">
                   <h1 className="text-base sm:text-lg font-semibold truncate">{item.name}</h1>
                   <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-300">
-                    <FaMapMarkerAlt className="text-green-600 flex-shrink-0" size={12} />
+                    <MapPin className="text-green-600 flex-shrink-0" size={12} />
                     <span className="truncate">{item.location}</span>
                   </div>
                   <div className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-300">
-                    <FaHome className="text-green-600 flex-shrink-0" size={12} />
+                    <Home className="text-green-600 flex-shrink-0" size={12} />
                     <span className="truncate">{item.property}</span>
                   </div>
                 </div>

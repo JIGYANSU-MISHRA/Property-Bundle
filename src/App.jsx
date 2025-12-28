@@ -1,30 +1,41 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { DarkModeProvider } from './components/DarkModeContext'
-import Header from './components/Header'
-import Hero from './sections/Hero'
-import About from './sections/About'
-import PopularAreas from './sections/PopularAreas'
-import Properties from './sections/Properties'
-import Services from './sections/Services'
-import Client from './sections/Client'
-import Contact from './sections/Contact'
-import Footer from './components/Footer'
+import Home from './Pages/Home'
+import AboutUs from './Pages/About-us'
+import ContactUs from './Pages/ContactUs'
+
+import Developer from './Pages/Sell/Developer';
+import Broker from './Pages/Sell/Broker';
+import Owner from './Pages/Sell/Owner';
+import Properties from './Pages/Properties';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 const App = () => {
   return (
-    <div>
-      <DarkModeProvider>
-        <Header/>
-        <Hero/>
-        <About/>
-        <PopularAreas/>
-        <Properties/>
-        <Services/>
-        <Client/>
-        <Contact/>
-        <Footer/>
-      </DarkModeProvider>
-    </div>
+    <DarkModeProvider>
+      <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/sell/developers" element={<Developer />} />
+          <Route path="/sell/brokers" element={<Broker />} />
+          <Route path="/sell/owners" element={<Owner />} />
+          <Route path="/properties" element={<Properties />} />
+        </Routes>
+      </Router>
+    </DarkModeProvider>
   )
 }
 

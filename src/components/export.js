@@ -15,24 +15,17 @@ import client6 from "../assets/images/client6.png";
 import area1 from "../assets/images/area1.jpg";
 import area2 from "../assets/images/area2.jpg";
 import area3 from "../assets/images/area3.jpg";
-import { MdNoteAlt } from "react-icons/md";
-import {
-  FaHome,
-  FaSearch,
-  FaNotesMedical,
-  FaCameraRetro,
-} from "react-icons/fa";
-import { GoLaw } from "react-icons/go";
+import { NotebookPen, Home, Search, ClipboardCheck, Camera, Gavel } from "lucide-react";
 
 // Enhanced property data with more diverse locations and features
 export const property = [
   {
     images: prop1,
-    address: "Connaught Place, New Delhi",
+    address: "New Town, Kolkata",
     name: "Luxury Villa with Garden View",
     price: "₹ 1.75 Cr",
     about:
-      "A stunning, modern villa located in the heart of New Delhi with premium amenities and green surroundings. Features smart home technology and 24/7 security.",
+      "A stunning, modern villa located in the heart of New Town, Kolkata, with premium amenities and green surroundings. Features smart home technology and 24/7 security.",
     bed: 4,
     bath: 3,
     area: "2500 sq ft",
@@ -46,11 +39,11 @@ export const property = [
   },
   {
     images: prop2,
-    address: "Bandra West, Mumbai",
-    name: "Sea-Facing Penthouse",
+    address: "Patia, Bhubaneswar",
+    name: "City-View Penthouse",
     price: "₹ 3.25 Cr",
     about:
-      "A lavish penthouse with a breathtaking sea view in one of Mumbai's most premium locations. Includes private terrace and panoramic city views.",
+      "A lavish penthouse with a breathtaking view in one of Bhubaneswar's most premium locations. Includes private terrace and panoramic city views.",
     bed: 3,
     bath: 3,
     area: "2000 sq ft",
@@ -82,11 +75,11 @@ export const property = [
   },
   {
     images: prop4,
-    address: "Indiranagar, Bangalore",
-    name: "Stylish Urban Apartment",
+    address: "Sea Beach Road, Puri",
+    name: "Stylish Coastal Apartment",
     price: "₹ 1.45 Cr",
     about:
-      "A contemporary-styled apartment with top-notch facilities and a prime location in Bangalore's tech hub. Perfect for young professionals.",
+      "A contemporary-styled apartment with top-notch facilities and a prime location near Puri beach. Perfect for holiday homes or young professionals.",
     bed: 3,
     bath: 2,
     area: "1400 sq ft",
@@ -100,11 +93,11 @@ export const property = [
   },
   {
     images: prop5,
-    address: "Anna Nagar, Chennai",
+    address: "Khandagiri, Bhubaneswar",
     name: "Luxury Villa with Pool",
     price: "₹ 2.10 Cr",
     about:
-      "A high-end villa with a private pool and lush greenery, offering a tranquil retreat within Chennai city. Features modern architecture.",
+      "A high-end villa with a private pool and lush greenery, offering a tranquil retreat near Khandagiri caves. Features modern architecture.",
     bed: 5,
     bath: 4,
     area: "3200 sq ft",
@@ -118,11 +111,11 @@ export const property = [
   },
   {
     images: prop6,
-    address: "Banjara Hills, Hyderabad",
+    address: "Jayadev Vihar, Bhubaneswar",
     name: "Premium Gated Community Villa",
     price: "₹ 1.95 Cr",
     about:
-      "A fully furnished villa in a top-tier gated community, offering security and premium amenities. Located in Hyderabad's most prestigious area.",
+      "A fully furnished villa in a top-tier gated community, offering security and premium amenities. Located in Bhubaneswar's most prestigious area.",
     bed: 4,
     bath: 3,
     area: "2800 sq ft",
@@ -136,11 +129,11 @@ export const property = [
   },
   {
     images: prop7,
-    address: "Koregaon Park, Pune",
+    address: "Gariahat, Kolkata",
     name: "Modern Studio Apartment",
     price: "₹ 65 Lakh",
     about:
-      "A chic studio apartment perfect for singles or couples. Located in Pune's most happening area with all modern amenities.",
+      "A chic studio apartment perfect for singles or couples. Located in Kolkata's most happening area with all modern amenities.",
     bed: 1,
     bath: 1,
     area: "800 sq ft",
@@ -154,11 +147,11 @@ export const property = [
   },
   {
     images: prop8,
-    address: "Jubilee Hills, Hyderabad",
+    address: "Marine Drive, Puri",
     name: "Luxury Penthouse Suite",
     price: "₹ 4.50 Cr",
     about:
-      "An ultra-luxurious penthouse with panoramic city views and world-class amenities. The epitome of luxury living in Hyderabad.",
+      "An ultra-luxurious penthouse with panoramic sea views and world-class amenities. The epitome of luxury living in Puri.",
     bed: 4,
     bath: 4,
     area: "3500 sq ft",
@@ -175,40 +168,34 @@ export const property = [
 // Enhanced services with more detailed descriptions
 export const service = [
   {
-    icon: MdNoteAlt,
+    icon: NotebookPen,
     title: "Sell your home",
     desc: "We sell your home at the best market price with professional photography and marketing strategies to maximize your returns.",
     features: ["Free Valuation", "Professional Photography", "Marketing Campaign", "Negotiation Support"]
   },
   {
-    icon: FaHome,
+    icon: Home,
     title: "Home loans",
     desc: "We offer you free consultancy to get a loan with the best interest rates and terms from top banks and financial institutions.",
     features: ["Free Consultation", "Multiple Bank Options", "Quick Processing", "Lowest Rates"]
   },
   {
-    icon: GoLaw,
+    icon: Gavel,
     title: "Legal services",
     desc: "Expert legal help for all related property items including documentation, verification, and compliance with local regulations.",
     features: ["Document Verification", "Legal Compliance", "Title Search", "Registration Support"]
   },
   {
-    icon: FaSearch,
+    icon: Search,
     title: "Home inspection",
     desc: "We make sure you get what you were promised with comprehensive property inspections and detailed reports.",
     features: ["Structural Inspection", "Quality Check", "Detailed Report", "Follow-up Support"]
   },
   {
-    icon: FaNotesMedical,
+    icon: ClipboardCheck,
     title: "Evaluation",
     desc: "We offer you free evaluation to get a mortgage loan with accurate property assessment and market analysis.",
     features: ["Market Analysis", "Property Valuation", "Investment Advice", "ROI Calculation"]
-  },
-  {
-    icon: FaCameraRetro,
-    title: "Photoshoot",
-    desc: "We prepare your home visual presentation with professional photography and virtual tours to attract potential buyers.",
-    features: ["Professional Photography", "Virtual Tours", "Drone Shots", "3D Walkthrough"]
   },
 ];
 

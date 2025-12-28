@@ -1,17 +1,7 @@
 import React from "react";
 import { useDarkMode } from "./DarkModeContext";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaYoutube,
-  FaBuilding,
-  FaMobile,
-  FaFax,
-  FaArrowUp,
-} from "react-icons/fa";
 import { Link } from "react-scroll";
-import { IoMdMail } from "react-icons/io";
+import { Facebook, Instagram, Twitter, Youtube, Building2, Smartphone, Phone, ArrowUp, Mail } from "lucide-react";
 import prop7 from "../assets/images/prop7.jpg";
 import prop8 from "../assets/images/prop8.jpg";
 
@@ -39,10 +29,10 @@ const Footer = () => {
 
             {/* Social Icons */}
             <div className="flex gap-3 mt-4">
-              {[FaFacebookF, FaInstagram, FaTwitter, FaYoutube].map((Icon, index) => (
+              {[Facebook, Instagram, Twitter, Youtube].map((Icon, index) => (
                 <a
                   key={index}
-                  href="#"
+                  href=""
                   className="p-3 rounded-lg bg-white text-gray-800 hover:bg-green-600 hover:text-white hover:scale-105 transition-all"
                 >
                   <Icon className="size-5" />
@@ -83,19 +73,19 @@ const Footer = () => {
             <h1 className="text-white text-2xl font-semibold">Contact Us</h1>
             {[
               {
-                icon: <FaBuilding className="text-white size-5" />,
+                icon: <Building2 className="text-white size-5" />,
                 text: "Property Bundle, 123 Business Street, Bhubaneswar, India",
               },
               {
-                icon: <FaMobile className="text-white size-5" />,
+                icon: <Smartphone className="text-white size-5" />,
                 text: "+91 99999 99999",
               },
               {
-                icon: <FaFax className="text-white size-5" />,
+                icon: <Phone className="text-white size-5" />,
                 text: "+91 77777 77777",
               },
               {
-                icon: <IoMdMail className="text-white size-5" />,
+                icon: <Mail className="text-white size-5" />,
                 text: "info@propertybundle.com",
               },
             ].map((item, i) => (
@@ -175,7 +165,7 @@ const Footer = () => {
         className="bg-green-600 p-4 rounded-full hover:bg-black fixed bottom-6 right-6 cursor-pointer transition lg:bottom-12"
       >
         <Link to="hero" smooth offset={-100} duration={500}>
-          <FaArrowUp className="size-6 text-white" />
+          <ArrowUp className="size-6 text-white" />
         </Link>
       </div>
     </>

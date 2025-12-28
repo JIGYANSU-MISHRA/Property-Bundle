@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { service } from "../components/export";
 import { useDarkMode } from "../components/DarkModeContext";
-import { FaArrowRight, FaCheck } from "react-icons/fa";
+import { ArrowRight, Check } from "lucide-react";
 
 const Services = () => {
   const [hoveredService, setHoveredService] = useState(null);
@@ -76,7 +76,7 @@ const Services = () => {
                   <div className={`mt-3 sm:mt-4 space-y-1.5 sm:space-y-2 transition-all duration-500 ease-out ${showFeatures ? 'max-h-40 opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-1 overflow-hidden'}`}>
                     {featuresList.map((feature, idx) => (
                       <div key={idx} className="flex items-center gap-2 text-xs sm:text-sm">
-                        <FaCheck className="text-green-600 text-xs flex-shrink-0" />
+                        <Check className="text-green-600 text-xs flex-shrink-0" />
                         <span className="text-gray-700 dark:text-gray-300">{feature}</span>
                       </div>
                     ))}
@@ -84,7 +84,7 @@ const Services = () => {
 
                   <button className="mt-3 sm:mt-4 inline-flex items-center gap-2 text-green-700 dark:text-green-300 font-semibold hover:text-green-800 dark:hover:text-green-200 transition-colors duration-300 text-sm sm:text-base">
                     Learn more
-                    <FaArrowRight className="text-xs group-hover:translate-x-1 transition-transform duration-300" />
+                    <ArrowRight className="text-xs group-hover:translate-x-1 transition-transform duration-300" />
                   </button>
                 </div>
               </div>
@@ -120,7 +120,7 @@ const Services = () => {
               <div className="mt-4 sm:mt-6">
                 <a href="#contact" className="inline-flex items-center gap-2 bg-green-600 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors text-sm sm:text-base">
                   Get Free Consultation
-                  <FaArrowRight className="text-xs" />
+                  <ArrowRight className="text-xs" />
                 </a>
               </div>
             </div>
