@@ -40,5 +40,3 @@ Property Bundle is a modern real estate website built with React.js and Tailwind
    ```
 
 ---
-
-Made with ❤️ by Jigyansu Mishra(https://github.com/JIGYANSU-MISHRA)
