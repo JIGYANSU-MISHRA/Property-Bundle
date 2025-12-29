@@ -9,6 +9,7 @@ import Developer from './Pages/Sell/Developer';
 import Broker from './Pages/Sell/Broker';
 import Owner from './Pages/Sell/Owner';
 import Properties from './Pages/Properties';
+import PuriPlots from './Pages/PuriPlots';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/sell/brokers" element={<Broker />} />
           <Route path="/sell/owners" element={<Owner />} />
           <Route path="/properties" element={<Properties />} />
+          <Route path="/buy-residential-plots-in-puri-konark-marine-drive" element={<PuriPlots />} />
         </Routes>
       </Router>
     </DarkModeProvider>
